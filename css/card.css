@@ -20,6 +20,8 @@
     background-color: #F5F5F5;
     padding-left: 24px;
     padding-right: 24px;
+    border-bottom-right-radius: 16px;
+    border-bottom-left-radius: 16px;
   
     font-family: "Inter";
     font-style: normal;
@@ -33,5 +35,4 @@
     align-items: center;
     justify-content: space-between;
     box-sizing: border-box;
-    
   }
