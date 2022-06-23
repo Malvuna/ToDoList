@@ -1,4 +1,4 @@
-.card {
+.cardClass {
     width: 594px;
     background: #ffffff;
     box-shadow: 0px 8px 35px rgba(0, 0, 0, 0.16);
@@ -6,7 +6,7 @@
     margin: 0 auto;
   }
   
-  .search {
+  .newDoClass {
     height: 86px;
     display: flex;
     align-items: center;
