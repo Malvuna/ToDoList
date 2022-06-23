@@ -1,6 +1,3 @@
-// переменная card
-let card = document.querySelector("#card");
-
 // //-------БЛОК 1 -------------------
 
 //переменная newDo
@@ -8,24 +5,22 @@ let newDo = document.querySelector("#newDo");
 
 // поле ввода
 let inputDo = document.createElement("input");
-inputDo.className = "input"
+inputDo.className = "input";
 inputDo.type = "input";
 inputDo.name = "inputName";
-inputDo.placeholder = "Сделать удаление завершенных и всех"
+inputDo.placeholder = "Сделать удаление завершенных и всех";
 
 // кнопка добавить
-let buttonDo = document.createElement('button');
+let buttonDo = document.createElement("button");
 buttonDo.type = "button";
 buttonDo.textContent = "Добавить";
-buttonDo.className = "buttonOne"
+buttonDo.className = "buttonOne";
 
 //сборка новой задачи
 newDo.append(inputDo);
 newDo.append(buttonDo);
 
 //-------БЛОК 1 КОНЕЦ---------
-
-
 
 //-------БЛОК 2 - id="list"
 let list = document.querySelector("#list");
@@ -73,10 +68,26 @@ close.append(deleteElem);
 
 //-------БЛОК 2 КОНЕЦ --------
 
+//-------БЛОК 3 -------------------
+
+//переменная delete
+let deleteButtons = document.querySelector("#delete");
 
 
+// кнопка удалить
+let buttonDeletOne = document.createElement("button");
+buttonDeletOne.type = "button";
+buttonDeletOne.textContent = "Удалить завершенные";
+buttonDeletOne.className = "buttonTwo";
 
-{/* <input class="input" type="text" id="idinput" name="inputName" placeholder="Сделать удаление завершенных и всех"> <br>
-          <button class="buttonOne">Добавить</button> */}
+//кнопка удалить все
+let buttonDeletTwo = document.createElement("button");
+buttonDeletTwo.type = "button";
+buttonDeletTwo.textContent = "Удалить все";
+buttonDeletTwo.className = "buttonThree";
 
+//сборка новой задачи
+deleteButtons.append(buttonDeletOne);
+deleteButtons.append(buttonDeletTwo);
 
+//-------БЛОК 3 КОНЕЦ---------
