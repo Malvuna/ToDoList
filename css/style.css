@@ -1,0 +1,36 @@
+@import url("./reset.css");
+@import url("./card.css");
+@import url("./button.css");
+@import url("./list.css");
+
+button {
+  border: none;
+}
+
+.h1 {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 58px;
+  line-height: 70px;
+  color: #000000;
+  text-align: center;
+  margin: 0 0;
+  padding-top: 80px;
+  padding-bottom: 33px;
+}
+
+.input {
+  width: 356px;
+  height: 38px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 21px;
+  color: #54595e;
+}
+

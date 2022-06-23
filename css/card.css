@@ -1,0 +1,37 @@
+.card {
+    width: 594px;
+    background: #ffffff;
+    box-shadow: 0px 8px 35px rgba(0, 0, 0, 0.16);
+    border-radius: 16px;
+    margin: 0 auto;
+  }
+  
+  .search {
+    height: 86px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 24px 24px;
+    border-bottom: 1px solid #dee2e6;
+  }
+  
+  .delete {
+    height: 75px;
+    background-color: #F5F5F5;
+    padding-left: 24px;
+    padding-right: 24px;
+  
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+    color: #ffffff;
+  
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    
+  }
