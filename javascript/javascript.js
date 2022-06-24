@@ -56,15 +56,17 @@ checkbox.name = "test";
 check.append(checkbox);
 
 //div текст задачи
-let input = document.createElement("label");
-input.type = "label";
-input.name = "test";
-text.append(input);
+let textDo = document.createElement("label");
+textDo.type = "label";
+textDo.name = "test";
+textDo.textContent = " ";
+text.append(textDo);
 
 //крестик удаление задачи
 let deleteElem = document.createElement("p");
 deleteElem.innerHTML = "X";
 close.append(deleteElem);
+
 
 //-------БЛОК 2 КОНЕЦ --------
 
@@ -73,21 +75,75 @@ close.append(deleteElem);
 //переменная delete
 let deleteButtons = document.querySelector("#delete");
 
-
 // кнопка удалить
-let buttonDeletOne = document.createElement("button");
-buttonDeletOne.type = "button";
-buttonDeletOne.textContent = "Удалить завершенные";
-buttonDeletOne.className = "buttonTwo";
+let buttonDeletFin = document.createElement("button");
+buttonDeletFin.type = "button";
+buttonDeletFin.textContent = "Удалить завершенные";
+buttonDeletFin.className = "buttonTwo";
 
 //кнопка удалить все
-let buttonDeletTwo = document.createElement("button");
-buttonDeletTwo.type = "button";
-buttonDeletTwo.textContent = "Удалить все";
-buttonDeletTwo.className = "buttonThree";
+let buttonDeletAll = document.createElement("button");
+buttonDeletAll.type = "button";
+buttonDeletAll.textContent = "Удалить все";
+buttonDeletAll.className = "buttonThree";
 
-//сборка новой задачи
-deleteButtons.append(buttonDeletOne);
-deleteButtons.append(buttonDeletTwo);
+//кнопки с удалением
+deleteButtons.append(buttonDeletFin);
+deleteButtons.append(buttonDeletAll);
 
 //-------БЛОК 3 КОНЕЦ---------
+
+// когда изменяем инпут запускаем функиию
+inputDo.addEventListener("change", search);
+
+// в переменно то что вводим в поиск
+let valueInput = inputDo.value;
+
+function search() {
+  // в переменно то что вводим в поиск
+  valueInput = inputDo.value;
+  console.log(valueInput);
+  textDo.textContent = inputDo.value;
+}
+
+// после нажатия кнопки добавить
+// отправляем данные с тем что ввели
+// и возвращаем обратно
+buttonDo.addEventListener("click", createTask);
+
+async function createTask() {
+  await fetch(
+    "http://24api.ru/rest-todo",
+    {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        name: valueInput,
+        isDone: 0,
+        user_id: 131,
+      }),
+    },
+  ).then((data) =>data.json())
+  .then((data) =>{
+    console.log(data)
+    // отрисовать 
+//     {
+//         id: 742
+// isDone: 0
+// name: "fwefwefwef"
+// user_id: 131
+//     }
+  });
+//функция выводит все задачи user131
+  fetch('http://24api.ru/rest-todo/items-by-id?id=131')
+  .then(res => res.json())
+  .then(data => {
+    console.log(data)
+    /// DRaw
+    // [
+    //     {}, 
+    // ]
+  })
+}
