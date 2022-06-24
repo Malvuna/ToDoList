@@ -3,8 +3,6 @@ fetch("http://24api.ru/rest-todo/items-by-id?id=131")
   .then((res) => res.json())
   .then((data) => {
     console.log(data);
-
-    // запуск функции для отрисовки всех задач
     for (let i in data) {
       newElement(data[i].id, data[i].isDone, data[i].name);
       console.log(data[i].name);
@@ -44,9 +42,9 @@ function newElement(id, isDone, name) {
   let element = document.createElement("div");
   element.className = "element";
 
-  //1 div в list
-  let check = document.createElement("div");
-  check.className = "check";
+//   //1 div в list
+//   let check = document.createElement("div");
+//   check.className = "check";
 
   //2 div в list
   let text = document.createElement("div");
@@ -86,12 +84,6 @@ function newElement(id, isDone, name) {
   deleteElem.dataset.id = id;
   close.append(deleteElem);
   //-------создание элемента --------
-
-  // наводим на крестик
-  deleteElem.addEventListener("click", deletDo);
-}
-function deletDo(event) {
-  console.log(event.target);
 }
 
 //-------БЛОК 3 -------------------
@@ -150,3 +142,10 @@ async function createTask() {
       console.log(data);
     });
 }
+
+// наводим на крестик
+// close.addEventListener("change", deletDo);
+
+// function deletDo() {
+//     console.log(hi);
+// }
