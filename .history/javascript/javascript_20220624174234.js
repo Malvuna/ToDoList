@@ -123,6 +123,7 @@ deleteButtons.append(buttonDeletAll);
 buttonDo.addEventListener("click", createTask);
 
 async function createTask() {
+
   // в переменно то что вводим в поиск
   let valueInput = inputDo.value;
 

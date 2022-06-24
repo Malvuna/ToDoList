@@ -1,12 +1,13 @@
 //функция выводит все задачи user131
-fetch("http://24api.ru/rest-todo/items-by-id?id=131")
-  .then((res) => res.json())
-  .then((data) => {
-    console.log(data);
-    for (let i in data) {
-      console.log(data[i].name);
-    }
-  });
+fetch('http://24api.ru/rest-todo/items-by-id?id=131')
+.then(res => res.json())
+.then(data => {
+  console.log(data)
+  /// DRaw
+  // [
+  //     {}, 
+  // ]
+})
 
 //-------Карточка----------
 let list = document.querySelector("#list");
@@ -36,6 +37,8 @@ element.append(text);
 element.append(close);
 //-------Карточка----------
 
+
+
 // //-------БЛОК 1 -------------------
 
 //переменная newDo
@@ -60,30 +63,29 @@ newDo.append(buttonDo);
 
 //-------БЛОК 1 КОНЕЦ---------
 
+
 //-------создание элемента --------
-function newElement(id, isDone, name) {
-  // div чекбокса
-  let checkbox = document.createElement("input");
-  checkbox.type = "checkbox";
-  checkbox.name = "test";
-  check.append(checkbox);
-  isDone == 1 ? true : false;
+function 
+// div чекбокса
+let checkbox = document.createElement("input");
+checkbox.type = "checkbox";
+checkbox.name = "test";
+check.append(checkbox);
 
-  //div текст задачи
-  let textDo = document.createElement("label");
-  textDo.type = "label";
-  textDo.name = "test";
-  textDo.textContent = name;
+//div текст задачи
+let textDo = document.createElement("label");
+textDo.type = "label";
+textDo.name = "test";
+textDo.textContent = " ";
+text.append(textDo);
 
-  text.append(textDo);
+//крестик удаление задачи
+let deleteElem = document.createElement("p");
+deleteElem.innerHTML = "X";
+close.append(deleteElem);
+//-------создание элемента --------
 
-  //крестик удаление задачи
-  let deleteElem = document.createElement("p");
-  deleteElem.innerHTML = "X";
-  deleteElem.dataset.id = id;
-  close.append(deleteElem);
-  //-------создание элемента --------
-}
+
 
 //-------БЛОК 3 -------------------
 
@@ -109,13 +111,16 @@ deleteButtons.append(buttonDeletAll);
 //-------БЛОК 3 КОНЕЦ---------
 
 // когда изменяем инпут запускаем функиию
-// inputDo.addEventListener("change", inputText);
+inputDo.addEventListener("change", inputText);
 
-// function inputText() {
-//   // функция выводит в дело то что ввели
-//   valueInput = inputDo.value;
-//   textDo.textContent = inputDo.value;
-// }
+// в переменно то что вводим в поиск
+let valueInput = inputDo.value;
+
+function inputText() {
+  // функция выводит в дело то что ввели
+  valueInput = inputDo.value;
+  textDo.textContent = inputDo.value;
+}
 
 // после нажатия кнопки добавить
 // отправляем данные с тем что ввели
@@ -123,23 +128,29 @@ deleteButtons.append(buttonDeletAll);
 buttonDo.addEventListener("click", createTask);
 
 async function createTask() {
-  // в переменно то что вводим в поиск
-  let valueInput = inputDo.value;
-
-  //отправляем данные с задачей
-  await fetch("http://24api.ru/rest-todo", {
-    method: "POST",
-    headers: {
-      "content-type": "application/json",
+  await fetch(
+    "http://24api.ru/rest-todo",
+    {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        name: valueInput,
+        isDone: 0,
+        user_id: 131,
+      }),
     },
-    body: JSON.stringify({
-      name: valueInput,
-      isDone: 0,
-      user_id: 131,
-    }),
-  })
-    .then((data) => data.json())
-    .then((data) => {
-      console.log(data);
-    });
+  ).then((data) =>data.json())
+  .then((data) =>{
+    console.log(data)
+    // отрисовать 
+//     {
+//         id: 742
+// isDone: 0
+// name: "fwefwefwef"
+// user_id: 131
+//     }
+  });
+
 }

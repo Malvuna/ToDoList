@@ -4,8 +4,13 @@ fetch("http://24api.ru/rest-todo/items-by-id?id=131")
   .then((data) => {
     console.log(data);
     for (let i in data) {
-      console.log(data[i].name);
-    }
+        console.log(data[i].name);
+
+      }
+    /// DRaw
+    // [
+    //     {},
+    // ]
   });
 
 //-------Карточка----------
@@ -123,10 +128,9 @@ deleteButtons.append(buttonDeletAll);
 buttonDo.addEventListener("click", createTask);
 
 async function createTask() {
-  // в переменно то что вводим в поиск
-  let valueInput = inputDo.value;
+    // в переменно то что вводим в поиск
 
-  //отправляем данные с задачей
+    let valueInput = inputDo.value;
   await fetch("http://24api.ru/rest-todo", {
     method: "POST",
     headers: {
@@ -141,5 +145,15 @@ async function createTask() {
     .then((data) => data.json())
     .then((data) => {
       console.log(data);
+
+     
     });
 }
+
+// отрисовать
+//     {
+//         id: 742
+// isDone: 0
+// name: "fwefwefwef"
+// user_id: 131
+//     }

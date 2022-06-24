@@ -6,6 +6,10 @@ fetch("http://24api.ru/rest-todo/items-by-id?id=131")
     for (let i in data) {
       console.log(data[i].name);
     }
+    /// DRaw
+    // [
+    //     {},
+    // ]
   });
 
 //-------Карточка----------
@@ -126,7 +130,6 @@ async function createTask() {
   // в переменно то что вводим в поиск
   let valueInput = inputDo.value;
 
-  //отправляем данные с задачей
   await fetch("http://24api.ru/rest-todo", {
     method: "POST",
     headers: {
