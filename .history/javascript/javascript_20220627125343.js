@@ -14,8 +14,6 @@ fetch("http://24api.ru/rest-todo/items-by-id?id=131")
   });
 }
 
-allTask();
-
 
 // //-------БЛОК 1 -------------------
 
@@ -42,7 +40,6 @@ newDo.append(buttonDo);
 //-------БЛОК 1 КОНЕЦ---------
 
 //-------создание элемента --------
-
 function newElement(id, isDone, name) {
   //-------Карточка----------
   let list = document.querySelector("#list");
@@ -93,10 +90,7 @@ function newElement(id, isDone, name) {
   deleteElem.dataset.id = id;
   close.append(deleteElem);
 
-
-  //-------  END создание элемента --------
-
-  //----------Удаление-------------
+  //-------создание элемента --------
 
   // наводим на крестик запускаем функиию.
   deleteElem.addEventListener("click", deletDo);
@@ -110,17 +104,8 @@ function newElement(id, isDone, name) {
     await fetch(`http://24api.ru/rest-todo/${deletId}`, {
       method: "DELETE",
     });
-
-    list.innerHTML = " ";
-    allTask();
-    
   }
 }
-
-  //----------END Удаление-------------
-
-  
-
 
 // function deletDo(event) {
 //   console.log(event.target);
@@ -168,8 +153,8 @@ async function createTask() {
       user_id: 131,
     }),
   })
-
-    allTask();
-    list.innerHTML = " ";
-   
+    .then((data) => data.json())
+    .then((data) => {
+      console.log(data);
+    });
 }

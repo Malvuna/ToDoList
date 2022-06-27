@@ -110,8 +110,6 @@ function newElement(id, isDone, name) {
     await fetch(`http://24api.ru/rest-todo/${deletId}`, {
       method: "DELETE",
     });
-
-    list.innerHTML = " ";
     allTask();
     
   }
@@ -157,7 +155,7 @@ async function createTask() {
   let valueInput = inputDo.value;
 
   //отправляем данные с задачей
-  await fetch("http://24api.ru/rest-todo", {
+   fetch("http://24api.ru/rest-todo", {
     method: "POST",
     headers: {
       "content-type": "application/json",
@@ -168,6 +166,10 @@ async function createTask() {
       user_id: 131,
     }),
   })
+    .then((data) => data.json())
+    .then((data) => {
+      console.log(data);
+    });
 
     allTask();
     list.innerHTML = " ";

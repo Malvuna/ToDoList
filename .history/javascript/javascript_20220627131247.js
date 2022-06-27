@@ -42,6 +42,7 @@ newDo.append(buttonDo);
 //-------БЛОК 1 КОНЕЦ---------
 
 //-------создание элемента --------
+let deleteElem
 
 function newElement(id, isDone, name) {
   //-------Карточка----------
@@ -88,11 +89,11 @@ function newElement(id, isDone, name) {
   text.append(textDo);
 
   //крестик удаление задачи
-  let deleteElem = document.createElement("p");
+   deleteElem = document.createElement("p");
   deleteElem.innerHTML = "X";
   deleteElem.dataset.id = id;
   close.append(deleteElem);
-
+}
 
   //-------  END создание элемента --------
 
@@ -110,12 +111,8 @@ function newElement(id, isDone, name) {
     await fetch(`http://24api.ru/rest-todo/${deletId}`, {
       method: "DELETE",
     });
-
-    list.innerHTML = " ";
     allTask();
-    
   }
-}
 
   //----------END Удаление-------------
 
@@ -157,7 +154,7 @@ async function createTask() {
   let valueInput = inputDo.value;
 
   //отправляем данные с задачей
-  await fetch("http://24api.ru/rest-todo", {
+   fetch("http://24api.ru/rest-todo", {
     method: "POST",
     headers: {
       "content-type": "application/json",
@@ -168,6 +165,10 @@ async function createTask() {
       user_id: 131,
     }),
   })
+    .then((data) => data.json())
+    .then((data) => {
+      console.log(data);
+    });
 
     allTask();
     list.innerHTML = " ";

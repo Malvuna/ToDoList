@@ -1,5 +1,4 @@
-// функция выводит все задачи user131
-function allTask() {
+//функция выводит все задачи user131
 fetch("http://24api.ru/rest-todo/items-by-id?id=131")
   .then((res) => res.json())
   .then((data) => {
@@ -8,14 +7,9 @@ fetch("http://24api.ru/rest-todo/items-by-id?id=131")
     // запуск функции для отрисовки всех задач
     for (let i in data) {
       newElement(data[i].id, data[i].isDone, data[i].name);
-      console.log(data[i].id);
       console.log(data[i].name);
     }
   });
-}
-
-allTask();
-
 
 // //-------БЛОК 1 -------------------
 
@@ -42,7 +36,6 @@ newDo.append(buttonDo);
 //-------БЛОК 1 КОНЕЦ---------
 
 //-------создание элемента --------
-
 function newElement(id, isDone, name) {
   //-------Карточка----------
   let list = document.querySelector("#list");
@@ -93,38 +86,21 @@ function newElement(id, isDone, name) {
   deleteElem.dataset.id = id;
   close.append(deleteElem);
 
+  //-------создание элемента --------
 
-  //-------  END создание элемента --------
-
-  //----------Удаление-------------
-
-  // наводим на крестик запускаем функиию.
+  // наводим на крестик
   deleteElem.addEventListener("click", deletDo);
-
-  async function deletDo() {
-    // в переменной id который удаляем
-    let deletId = deleteElem.dataset.id;
-    console.log(deletId);
-
-    //отправляем данные на удаление
-    await fetch(`http://24api.ru/rest-todo/${deletId}`, {
-      method: "DELETE",
-    });
-
-    list.innerHTML = " ";
-    allTask();
-    
+   
+  function deletDo(event) {
+    console.log(event.target);
   }
+
+  const index = dat.findIndex(n => n.id === deleteElem.dataset.id);
+if (index !== -1) {
+  arr.splice(index, 1);
 }
 
-  //----------END Удаление-------------
-
-  
-
-
-// function deletDo(event) {
-//   console.log(event.target);
-// }
+}
 
 //-------БЛОК 3 -------------------
 
@@ -149,6 +125,7 @@ deleteButtons.append(buttonDeletAll);
 
 //-------БЛОК 3 КОНЕЦ---------
 
+
 //когда нажимаем кнопку запускаем функиию.
 buttonDo.addEventListener("click", createTask);
 
@@ -168,8 +145,8 @@ async function createTask() {
       user_id: 131,
     }),
   })
-
-    allTask();
-    list.innerHTML = " ";
-   
+    .then((data) => data.json())
+    .then((data) => {
+      console.log(data);
+    });
 }

@@ -1,5 +1,4 @@
-// функция выводит все задачи user131
-function allTask() {
+//функция выводит все задачи user131
 fetch("http://24api.ru/rest-todo/items-by-id?id=131")
   .then((res) => res.json())
   .then((data) => {
@@ -12,10 +11,6 @@ fetch("http://24api.ru/rest-todo/items-by-id?id=131")
       console.log(data[i].name);
     }
   });
-}
-
-allTask();
-
 
 // //-------БЛОК 1 -------------------
 
@@ -42,7 +37,6 @@ newDo.append(buttonDo);
 //-------БЛОК 1 КОНЕЦ---------
 
 //-------создание элемента --------
-
 function newElement(id, isDone, name) {
   //-------Карточка----------
   let list = document.querySelector("#list");
@@ -92,39 +86,42 @@ function newElement(id, isDone, name) {
   deleteElem.innerHTML = "X";
   deleteElem.dataset.id = id;
   close.append(deleteElem);
-
-
-  //-------  END создание элемента --------
-
-  //----------Удаление-------------
+  
+  //-------создание элемента --------
 
   // наводим на крестик запускаем функиию.
   deleteElem.addEventListener("click", deletDo);
 
-  async function deletDo() {
-    // в переменной id который удаляем
-    let deletId = deleteElem.dataset.id;
-    console.log(deletId);
+  async function deletTask() {
+    // в переменной id 
+  let deletId = deleteElem.dataset.id;
 
-    //отправляем данные на удаление
-    await fetch(`http://24api.ru/rest-todo/${deletId}`, {
-      method: "DELETE",
+  //отправляем данные наудаление
+  await fetch("http://24api.ru/rest-todo", {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({
+      name: valueInput,
+      isDone: 0,
+      user_id: 131,
+    }),
+  })
+    .then((data) => data.json())
+    .then((data) => {
+      console.log(data);
     });
-
-    list.innerHTML = " ";
-    allTask();
-    
-  }
 }
 
-  //----------END Удаление-------------
 
-  
+  }
+   
+  // function deletDo(event) {
+  //   console.log(event.target);
+  // }
 
-
-// function deletDo(event) {
-//   console.log(event.target);
-// }
+}
 
 //-------БЛОК 3 -------------------
 
@@ -149,6 +146,7 @@ deleteButtons.append(buttonDeletAll);
 
 //-------БЛОК 3 КОНЕЦ---------
 
+
 //когда нажимаем кнопку запускаем функиию.
 buttonDo.addEventListener("click", createTask);
 
@@ -168,8 +166,8 @@ async function createTask() {
       user_id: 131,
     }),
   })
-
-    allTask();
-    list.innerHTML = " ";
-   
+    .then((data) => data.json())
+    .then((data) => {
+      console.log(data);
+    });
 }

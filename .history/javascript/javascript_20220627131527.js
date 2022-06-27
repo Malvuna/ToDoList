@@ -168,6 +168,10 @@ async function createTask() {
       user_id: 131,
     }),
   })
+    // .then((data) => data.json())
+    // .then((data) => {
+    //   console.log(data);
+    // });
 
     allTask();
     list.innerHTML = " ";
