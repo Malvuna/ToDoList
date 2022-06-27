@@ -1,20 +1,21 @@
 // функция выводит все задачи user131
 function allTask() {
-  fetch("http://24api.ru/rest-todo/items-by-id?id=131")
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data);
+fetch("http://24api.ru/rest-todo/items-by-id?id=131")
+  .then((res) => res.json())
+  .then((data) => {
+    console.log(data);
 
-      // запуск функции для отрисовки всех задач
-      for (let i in data) {
-        newElement(data[i].id, data[i].isDone, data[i].name);
-        console.log(data[i].id);
-        console.log(data[i].name);
-      }
-    });
+    // запуск функции для отрисовки всех задач
+    for (let i in data) {
+      newElement(data[i].id, data[i].isDone, data[i].name);
+      console.log(data[i].id);
+      console.log(data[i].name);
+    }
+  });
 }
 
 allTask();
+
 
 // //-------БЛОК 1 -------------------
 
@@ -41,10 +42,10 @@ newDo.append(buttonDo);
 //-------БЛОК 1 КОНЕЦ---------
 
 //-------создание элемента --------
-let list = document.querySelector("#list");
 
 function newElement(id, isDone, name) {
   //-------Карточка----------
+  let list = document.querySelector("#list");
 
   // оболочка для запси
   let element = document.createElement("div");
@@ -91,6 +92,7 @@ function newElement(id, isDone, name) {
   deleteElem.innerHTML = "X";
   deleteElem.dataset.id = id;
   close.append(deleteElem);
+
   //-------  END создание элемента --------
 
   //----------Удаление-------------
@@ -110,10 +112,18 @@ function newElement(id, isDone, name) {
 
     list.innerHTML = " ";
     allTask();
+    
   }
 }
 
-//----------END Удаление-------------
+  //----------END Удаление-------------
+
+  
+
+
+// function deletDo(event) {
+//   console.log(event.target);
+// }
 
 //-------БЛОК 3 -------------------
 
@@ -138,49 +148,7 @@ deleteButtons.append(buttonDeletAll);
 
 //-------БЛОК 3 КОНЕЦ---------
 
-//--- Удаление всех---------------
-
-// наводим на кнопку УДАЛИТЬ все запускаем функиию на получение всех задач
-buttonDeletAll.addEventListener("click", getAllTask);
-
-let mapArr;
-
-//функция всех задач
-async function getAllTask() {
-  const allTask = await fetch("http://24api.ru/rest-todo/items-by-id?id=131", {
-    method: "GET",
-    headers: {
-      "content-type": "application/json",
-    },
-  });
-  const data = await allTask.json();
-  console.log(data);
-
-  mapArr = data.map((elem) => {
-    return elem.id;
-  });
-  console.log(mapArr);
-  deletALL();
-}
-
-async function deletALL() {
-  //отправляем данные на удаление
-  await fetch("http://24api.ru/rest-todo/delete-items/", {
-    method: "POST",
-    headers: {
-      "content-type": "application/json",
-    },
-    body: JSON.stringify({
-      items: mapArr,
-    }),
-  });
-  list.innerHTML = " ";
-  allTask();
-}
-
-//---END  Удаление всех задач
-
-//когда нажимаем кнопку Добавить запускаем функиию.
+//когда нажимаем кнопку запускаем функиию.
 buttonDo.addEventListener("click", createTask);
 
 async function createTask() {
@@ -204,6 +172,7 @@ async function createTask() {
       console.log(data);
     });
 
-  allTask();
-  list.innerHTML = " ";
+    allTask();
+    list.innerHTML = " ";
+   
 }

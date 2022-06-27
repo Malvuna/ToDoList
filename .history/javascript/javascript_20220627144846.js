@@ -143,40 +143,36 @@ deleteButtons.append(buttonDeletAll);
 // наводим на кнопку УДАЛИТЬ все запускаем функиию на получение всех задач
 buttonDeletAll.addEventListener("click", getAllTask);
 
-let mapArr;
-
 //функция всех задач
 async function getAllTask() {
-  const allTask = await fetch("http://24api.ru/rest-todo/items-by-id?id=131", {
+  await fetch("http://24api.ru/rest-todo/items-by-id?id=131", {
     method: "GET",
     headers: {
       "content-type": "application/json",
     },
   });
-  const data = await allTask.json();
+   await allTask.json();
   console.log(data);
-
-  mapArr = data.map((elem) => {
-    return elem.id;
-  });
-  console.log(mapArr);
-  deletALL();
 }
 
-async function deletALL() {
-  //отправляем данные на удаление
-  await fetch("http://24api.ru/rest-todo/delete-items/", {
-    method: "POST",
-    headers: {
-      "content-type": "application/json",
-    },
-    body: JSON.stringify({
-      items: mapArr,
-    }),
-  });
-  list.innerHTML = " ";
-  allTask();
-}
+
+
+
+
+    async function deletALL() {
+      //отправляем данные на удаление
+      await fetch(`http://24api.ru/rest-todo/delete-items/${i}`, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({
+          items: ,
+      });
+    }
+    
+ 
+
 
 //---END  Удаление всех задач
 
