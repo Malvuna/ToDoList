@@ -1,7 +1,20 @@
-import {allTask} from "./function.js";
+// функция выводит все задачи user131
+function allTask() {
+  fetch("http://24api.ru/rest-todo/items-by-id?id=131")
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
 
-// вызываем функцию отрисовки всех элементов
-allTask(newElement);
+      // запуск функции для отрисовки всех задач
+      for (let i in data) {
+        newElement(data[i].id, data[i].isDone, data[i].name);
+        console.log(data[i].id);
+        console.log(data[i].name);
+      }
+    });
+}
+
+allTask();
 
 // //-------БЛОК 1 -------------------
 
@@ -27,13 +40,13 @@ newDo.append(buttonDo);
 
 //-------БЛОК 1 КОНЕЦ---------
 
-//-------создание списка --------
+//-------создание элемента --------
 let list = document.querySelector("#list");
 
-  //-------Карточка----------
 function newElement(id, isDone, name) {
+  //-------Карточка----------
 
-  // оболочка для записи
+  // оболочка для запси
   let element = document.createElement("div");
   element.className = "element";
 
@@ -56,15 +69,14 @@ function newElement(id, isDone, name) {
   element.append(check);
   element.append(text);
   element.append(close);
-  //-------END Карточка----------
+  //-------Карточка----------
 
   // div чекбокса
   let checkbox = document.createElement("input");
   checkbox.type = "checkbox";
-  checkbox.name = "checkbox";
+  checkbox.name = "test";
   check.append(checkbox);
   isDone == 1 ? true : false;
-
 
   //div текст задачи
   let textDo = document.createElement("label");
@@ -83,15 +95,12 @@ function newElement(id, isDone, name) {
 
   //----------Удаление-------------
 
-  // наводим на крестик запускаем  функцию deletDo в которую передаем параметр deleteElem.dataset.id
-  deleteElem.addEventListener("click",() => {deletDo(deleteElem.dataset.id)});
+  // наводим на крестик запускаем функиию.
+  deleteElem.addEventListener("click", deletDo);
 
-  
-
-// функцию deletDo в которой мы отправляем данные на удаление
-async function deletDo(id) {
+  async function deletDo() {
     // в переменной id который удаляем
-    let deletId = id;
+    let deletId = deleteElem.dataset.id;
     console.log(deletId);
 
     //отправляем данные на удаление
@@ -100,8 +109,10 @@ async function deletDo(id) {
     });
 
     list.innerHTML = " ";
-    allTask(newElement);
+    allTask();
   }
+}
+
 //----------END Удаление-------------
 
 //-------БЛОК 3 -------------------
@@ -127,7 +138,47 @@ deleteButtons.append(buttonDeletAll);
 
 //-------БЛОК 3 КОНЕЦ---------
 
-//------Добавление новой задачи ----------
+//--- Удаление всех---------------
+
+// наводим на кнопку УДАЛИТЬ все запускаем функиию на получение всех задач
+buttonDeletAll.addEventListener("click", getAllTask);
+
+let mapArr;
+
+//функция  получения всех задач
+async function getAllTask() {
+  const allTask = await fetch("http://24api.ru/rest-todo/items-by-id?id=131", {
+    method: "GET",
+    headers: {
+      "content-type": "application/json",
+    },
+  });
+  const data = await allTask.json();
+  console.log(data);
+
+  mapArr = data.map((elem) => {
+    return elem.id;
+  });
+  console.log(mapArr);
+  deletALL();
+}
+
+async function deletALL() {
+  //отправляем данные на удаление
+  await fetch("http://24api.ru/rest-todo/delete-items/", {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({
+      items: mapArr,
+    }),
+  });
+  list.innerHTML = " ";
+  allTask();
+}
+
+//---END  Удаление всех задач
 
 //когда нажимаем кнопку Добавить запускаем функиию.
 buttonDo.addEventListener("click", createTask);
@@ -153,61 +204,6 @@ async function createTask() {
       console.log(data);
     });
 
-  allTask(newElement);
+  allTask();
   list.innerHTML = " ";
 }
-//------END Добавление новой задачи ----------
-
-
-//--- Удаление всех---------------
-
-// наводим на кнопку УДАЛИТЬ все запускаем функиию на получение всех задач
-buttonDeletAll.addEventListener("click", getAllTask);
-
-//переменая с массивом id
-let mapArr;
-
-//функция  получения всех задач
-async function getAllTask() {
-  const allTask = await fetch("http://24api.ru/rest-todo/items-by-id?id=131", {
-    method: "GET",
-    headers: {
-      "content-type": "application/json",
-    },
-  });
-  const data = await allTask.json();
-  console.log(data);
-
-  // перебираем массив и получаем обратно массив с id
-  mapArr = data.map((elem) => {
-    return elem.id;
-  });
-  console.log(mapArr);
-  deletALL();
-}
-
-// функция на удаление данных в body массив данных с id которые нужно удалить
-async function deletALL() {
-  
-  await fetch("http://24api.ru/rest-todo/delete-items/", {
-    method: "POST",
-    headers: {
-      "content-type": "application/json",
-    },
-    body: JSON.stringify({
-      items: mapArr,
-    }),
-  });
-  list.innerHTML = " ";
-  allTask(newElement);
-}
-
-//---END  Удаление всех задач
-
-// // ------- chek задачи
-// ставим чек бокс и он меняет текст на зачеркнутый
-checkbox.addEventListener("click",() => {strikeText(textDo)});
-}
-  function strikeText(textDo){
-    textDo.classList.add("textThrough")
-  }

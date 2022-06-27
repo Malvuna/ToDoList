@@ -27,7 +27,7 @@ newDo.append(buttonDo);
 
 //-------БЛОК 1 КОНЕЦ---------
 
-//-------создание списка --------
+//-------создание элемента --------
 let list = document.querySelector("#list");
 
   //-------Карточка----------
@@ -205,9 +205,4 @@ async function deletALL() {
 //---END  Удаление всех задач
 
 // // ------- chek задачи
-// ставим чек бокс и он меняет текст на зачеркнутый
-checkbox.addEventListener("click",() => {strikeText(textDo)});
-}
-  function strikeText(textDo){
-    textDo.classList.add("textThrough")
-  }
+

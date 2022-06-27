@@ -1,7 +1,20 @@
-import {allTask} from "./function.js";
+// функция выводит все задачи user131
+function allTask() {
+  fetch("http://24api.ru/rest-todo/items-by-id?id=131")
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
 
-// вызываем функцию отрисовки всех элементов
-allTask(newElement);
+      // запуск функции для отрисовки всех задач
+      for (let i in data) {
+        newElement(data[i].id, data[i].isDone, data[i].name);
+        console.log(data[i].id);
+        console.log(data[i].name);
+      }
+    });
+}
+
+allTask();
 
 // //-------БЛОК 1 -------------------
 
@@ -27,13 +40,13 @@ newDo.append(buttonDo);
 
 //-------БЛОК 1 КОНЕЦ---------
 
-//-------создание списка --------
+//-------создание элемента --------
 let list = document.querySelector("#list");
 
-  //-------Карточка----------
 function newElement(id, isDone, name) {
+  //-------Карточка----------
 
-  // оболочка для записи
+  // оболочка для запси
   let element = document.createElement("div");
   element.className = "element";
 
@@ -56,7 +69,7 @@ function newElement(id, isDone, name) {
   element.append(check);
   element.append(text);
   element.append(close);
-  //-------END Карточка----------
+  //-------Карточка----------
 
   // div чекбокса
   let checkbox = document.createElement("input");
@@ -87,7 +100,6 @@ function newElement(id, isDone, name) {
   deleteElem.addEventListener("click",() => {deletDo(deleteElem.dataset.id)});
 
   
-
 // функцию deletDo в которой мы отправляем данные на удаление
 async function deletDo(id) {
     // в переменной id который удаляем
@@ -100,7 +112,7 @@ async function deletDo(id) {
     });
 
     list.innerHTML = " ";
-    allTask(newElement);
+    allTask();
   }
 //----------END Удаление-------------
 
@@ -153,7 +165,7 @@ async function createTask() {
       console.log(data);
     });
 
-  allTask(newElement);
+  allTask();
   list.innerHTML = " ";
 }
 //------END Добавление новой задачи ----------
@@ -199,15 +211,42 @@ async function deletALL() {
     }),
   });
   list.innerHTML = " ";
-  allTask(newElement);
+  allTask();
 }
 
 //---END  Удаление всех задач
 
 // // ------- chek задачи
+
 // ставим чек бокс и он меняет текст на зачеркнутый
 checkbox.addEventListener("click",() => {strikeText(textDo)});
 }
   function strikeText(textDo){
     textDo.classList.add("textThrough")
+  }
+
+
+  async function createTask() {
+    // в переменно то что вводим в поиск
+    let valueInput = inputDo.value;
+  
+    //отправляем данные с задачей
+    await fetch("http://24api.ru/rest-todo", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        name: valueInput,
+        isDone: 0,
+        user_id: 131,
+      }),
+    })
+      .then((data) => data.json())
+      .then((data) => {
+        console.log(data);
+      });
+  
+    allTask();
+    list.innerHTML = " ";
   }

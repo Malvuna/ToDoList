@@ -27,7 +27,7 @@ newDo.append(buttonDo);
 
 //-------БЛОК 1 КОНЕЦ---------
 
-//-------создание списка --------
+//-------создание элемента --------
 let list = document.querySelector("#list");
 
   //-------Карточка----------
@@ -56,7 +56,7 @@ function newElement(id, isDone, name) {
   element.append(check);
   element.append(text);
   element.append(close);
-  //-------END Карточка----------
+  //-------Карточка----------
 
   // div чекбокса
   let checkbox = document.createElement("input");
@@ -86,7 +86,12 @@ function newElement(id, isDone, name) {
   // наводим на крестик запускаем  функцию deletDo в которую передаем параметр deleteElem.dataset.id
   deleteElem.addEventListener("click",() => {deletDo(deleteElem.dataset.id)});
 
-  
+  // ставим чек бокс и он меняет текст на зачеркнутый
+  checkbox.addEventListener("click",() => {strikeText(textDo)});
+}
+  function strikeText(textDo){
+    textDo.classList.add("textThrough")
+  }
 
 // функцию deletDo в которой мы отправляем данные на удаление
 async function deletDo(id) {
@@ -205,9 +210,4 @@ async function deletALL() {
 //---END  Удаление всех задач
 
 // // ------- chek задачи
-// ставим чек бокс и он меняет текст на зачеркнутый
-checkbox.addEventListener("click",() => {strikeText(textDo)});
-}
-  function strikeText(textDo){
-    textDo.classList.add("textThrough")
-  }
+

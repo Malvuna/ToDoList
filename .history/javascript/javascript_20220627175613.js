@@ -1,7 +1,20 @@
-import {allTask} from "./function.js";
+// функция выводит все задачи user131
+function allTask() {
+  fetch("http://24api.ru/rest-todo/items-by-id?id=131")
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
 
-// вызываем функцию отрисовки всех элементов
-allTask(newElement);
+      // запуск функции для отрисовки всех задач
+      for (let i in data) {
+        newElement(data[i].id, data[i].isDone, data[i].name);
+        console.log(data[i].id);
+        console.log(data[i].name);
+      }
+    });
+}
+
+allTask();
 
 // //-------БЛОК 1 -------------------
 
@@ -27,13 +40,13 @@ newDo.append(buttonDo);
 
 //-------БЛОК 1 КОНЕЦ---------
 
-//-------создание списка --------
+//-------создание элемента --------
 let list = document.querySelector("#list");
 
-  //-------Карточка----------
 function newElement(id, isDone, name) {
+  //-------Карточка----------
 
-  // оболочка для записи
+  // оболочка для запси
   let element = document.createElement("div");
   element.className = "element";
 
@@ -56,7 +69,7 @@ function newElement(id, isDone, name) {
   element.append(check);
   element.append(text);
   element.append(close);
-  //-------END Карточка----------
+  //-------Карточка----------
 
   // div чекбокса
   let checkbox = document.createElement("input");
@@ -86,9 +99,13 @@ function newElement(id, isDone, name) {
   // наводим на крестик запускаем  функцию deletDo в которую передаем параметр deleteElem.dataset.id
   deleteElem.addEventListener("click",() => {deletDo(deleteElem.dataset.id)});
 
-  
+  checkbox.addEventListener("click",() => {strikeText(textDo)});
+}
+  function strikeText(textDo){
+    textDo.cla
+  }
 
-// функцию deletDo в которой мы отправляем данные на удаление
+
 async function deletDo(id) {
     // в переменной id который удаляем
     let deletId = id;
@@ -100,7 +117,7 @@ async function deletDo(id) {
     });
 
     list.innerHTML = " ";
-    allTask(newElement);
+    allTask();
   }
 //----------END Удаление-------------
 
@@ -153,7 +170,7 @@ async function createTask() {
       console.log(data);
     });
 
-  allTask(newElement);
+  allTask();
   list.innerHTML = " ";
 }
 //------END Добавление новой задачи ----------
@@ -199,15 +216,10 @@ async function deletALL() {
     }),
   });
   list.innerHTML = " ";
-  allTask(newElement);
+  allTask();
 }
 
 //---END  Удаление всех задач
 
 // // ------- chek задачи
-// ставим чек бокс и он меняет текст на зачеркнутый
-checkbox.addEventListener("click",() => {strikeText(textDo)});
-}
-  function strikeText(textDo){
-    textDo.classList.add("textThrough")
-  }
+// input[type="checkbox"]:checked

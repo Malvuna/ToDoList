@@ -10,7 +10,7 @@
 
 .text {
   margin-left: 16px;
-
+  text-decoration: line-through;
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
@@ -22,7 +22,6 @@
 .textThrough {
   margin-left: 16px;
   text-decoration: line-through;
-  
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
