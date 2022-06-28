@@ -228,9 +228,6 @@ async function checkTask(id) {
   //отправляем изменений чекбокса
   await fetch("http://24api.ru/rest-todo/" + id, {
     method: "PUT",
-    headers: {
-      "content-type": "application/json",
-    },
     body: JSON.stringify({
       isDone: 1,
     }),

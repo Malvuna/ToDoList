@@ -85,7 +85,6 @@ function newElement(id, isDone, name) {
 
   function strikeText(textDo) {
     textDo.classList.toggle("textThrough");
-    checkTask(deleteElem.dataset.id);
   }
 
   //Текст задачи
@@ -180,6 +179,7 @@ async function createTask() {
 }
 //------END Добавление новой задачи ----------
 
+
 //--- Удаление всех---------------
 
 // наводим на кнопку УДАЛИТЬ все запускаем функиию на получение всех задач
@@ -187,6 +187,7 @@ buttonDeletAll.addEventListener("click", getAllTask);
 
 //переменая с массивом id
 let mapArr;
+
 
 //функция  получения всех задач
 async function getAllTask() {
@@ -209,6 +210,7 @@ async function getAllTask() {
 
 // функция на удаление данных в body массив данных с id которые нужно удалить
 async function deletALL() {
+  
   await fetch("http://24api.ru/rest-todo/delete-items/", {
     method: "POST",
     headers: {
@@ -224,15 +226,17 @@ async function deletALL() {
 
 //---END  Удаление всех задач
 
-async function checkTask(id) {
-  //отправляем изменений чекбокса
-  await fetch("http://24api.ru/rest-todo/" + id, {
-    method: "PUT",
-    headers: {
-      "content-type": "application/json",
-    },
-    body: JSON.stringify({
-      isDone: 1,
-    }),
-  });
-}
+
+// async function checkTask() {
+//   //отправляем изменений чекбокса 
+//   await fetch("http://24api.ru/rest-todo/", {
+//     method: "PUT",
+//     body: JSON.stringify({
+//       isDone: 1,
+//     }),
+//   })
+// }
+
+
+
+

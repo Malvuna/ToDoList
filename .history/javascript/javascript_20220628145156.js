@@ -43,7 +43,7 @@ newDo.append(buttonDo);
 //-------создание элемента --------
 let list = document.querySelector("#list");
 
-function newElement(id, isDone, name) {
+
   //-------Карточка----------
 
   // оболочка для запси
@@ -85,7 +85,7 @@ function newElement(id, isDone, name) {
 
   function strikeText(textDo) {
     textDo.classList.toggle("textThrough");
-    checkTask(deleteElem.dataset.id);
+    checkTask(deleteElem.dataset.id)
   }
 
   //Текст задачи
@@ -228,11 +228,8 @@ async function checkTask(id) {
   //отправляем изменений чекбокса
   await fetch("http://24api.ru/rest-todo/" + id, {
     method: "PUT",
-    headers: {
-      "content-type": "application/json",
-    },
     body: JSON.stringify({
       isDone: 1,
     }),
-  });
+  })
 }

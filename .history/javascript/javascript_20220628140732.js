@@ -83,10 +83,9 @@ function newElement(id, isDone, name) {
     strikeText(textDo);
   });
 
-  function strikeText(textDo) {
-    textDo.classList.toggle("textThrough");
-    checkTask(deleteElem.dataset.id);
-  }
+function strikeText(textDo) {
+  textDo.classList.toggle("textThrough");
+}
 
   //Текст задачи
   let textDo = document.createElement("label");
@@ -101,7 +100,6 @@ function newElement(id, isDone, name) {
   deleteElem.innerHTML = "X";
   deleteElem.dataset.id = id;
   close.append(deleteElem);
-
   //-------  END создание элемента --------
 
   //----------Удаление-------------
@@ -180,6 +178,7 @@ async function createTask() {
 }
 //------END Добавление новой задачи ----------
 
+
 //--- Удаление всех---------------
 
 // наводим на кнопку УДАЛИТЬ все запускаем функиию на получение всех задач
@@ -209,6 +208,7 @@ async function getAllTask() {
 
 // функция на удаление данных в body массив данных с id которые нужно удалить
 async function deletALL() {
+  
   await fetch("http://24api.ru/rest-todo/delete-items/", {
     method: "POST",
     headers: {
@@ -224,15 +224,21 @@ async function deletALL() {
 
 //---END  Удаление всех задач
 
-async function checkTask(id) {
-  //отправляем изменений чекбокса
-  await fetch("http://24api.ru/rest-todo/" + id, {
+
+async function checkTask() {
+  
+  //отправляем изменений чекбокса 
+  await fetch("http://24api.ru/rest-todo/", {
     method: "PUT",
     headers: {
       "content-type": "application/json",
     },
     body: JSON.stringify({
-      isDone: 1,
+      isDone: 0,
     }),
-  });
+  })
 }
+
+
+
+

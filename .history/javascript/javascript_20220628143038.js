@@ -83,10 +83,9 @@ function newElement(id, isDone, name) {
     strikeText(textDo);
   });
 
-  function strikeText(textDo) {
-    textDo.classList.toggle("textThrough");
-    checkTask(deleteElem.dataset.id);
-  }
+function strikeText(textDo) {
+  textDo.classList.toggle("textThrough");
+}
 
   //Текст задачи
   let textDo = document.createElement("label");
@@ -224,15 +223,12 @@ async function deletALL() {
 
 //---END  Удаление всех задач
 
-async function checkTask(id) {
-  //отправляем изменений чекбокса
-  await fetch("http://24api.ru/rest-todo/" + id, {
-    method: "PUT",
-    headers: {
-      "content-type": "application/json",
-    },
-    body: JSON.stringify({
-      isDone: 1,
-    }),
-  });
-}
+// async function checkTask() {
+//   //отправляем изменений чекбокса
+//   await fetch("http://24api.ru/rest-todo/", {
+//     method: "PUT",
+//     body: JSON.stringify({
+//       isDone: 1,
+//     }),
+//   })
+// }
