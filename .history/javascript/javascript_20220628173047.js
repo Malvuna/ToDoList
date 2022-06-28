@@ -215,7 +215,7 @@ async function deletALL(idArr) {
       "content-type": "application/json",
     },
     body: JSON.stringify({
-      items: idArr,
+      items: mapArr,
     }),
   });
   list.innerHTML = " ";
@@ -272,7 +272,7 @@ getFinMap = getFin.map((elem) => {
 
 console.log(getFinMap);
   
-  deletALL(getFinMap);
+  // deletALL();
 }
 
 

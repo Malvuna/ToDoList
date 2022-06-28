@@ -208,14 +208,14 @@ async function getAllTask() {
 }
 
 // функция на удаление данных в body массив данных с id которые нужно удалить
-async function deletALL(idArr) {
+async function deletALL(bbb) {
   await fetch("http://24api.ru/rest-todo/delete-items/", {
     method: "POST",
     headers: {
       "content-type": "application/json",
     },
     body: JSON.stringify({
-      items: idArr,
+      items: mapArr,
     }),
   });
   list.innerHTML = " ";
@@ -272,7 +272,7 @@ getFinMap = getFin.map((elem) => {
 
 console.log(getFinMap);
   
-  deletALL(getFinMap);
+  // deletALL();
 }
 
 

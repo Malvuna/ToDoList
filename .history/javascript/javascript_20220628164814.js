@@ -5,6 +5,8 @@ function allTask() {
     .then((data) => {
       console.log(data);
 
+    }
+
       // запуск функции для отрисовки всех задач
       for (let i in data) {
         newElement(data[i].id, data[i].isDone, data[i].name);
@@ -204,18 +206,18 @@ async function getAllTask() {
     return elem.id;
   });
   console.log(mapArr);
-  deletALL(mapArr);
+  deletALL();
 }
 
 // функция на удаление данных в body массив данных с id которые нужно удалить
-async function deletALL(idArr) {
+async function deletALL() {
   await fetch("http://24api.ru/rest-todo/delete-items/", {
     method: "POST",
     headers: {
       "content-type": "application/json",
     },
     body: JSON.stringify({
-      items: idArr,
+      items: mapArr,
     }),
   });
   list.innerHTML = " ";
@@ -238,43 +240,3 @@ async function checkTask(id) {
   list.innerHTML = " ";
   allTask();
 }
-
-
-// УДАЛИТЬ ЧЕКНУТЫЕ
-
-buttonDeletFin.addEventListener("click", getFinTask);
-
-//переменая с массивом id
-let getFin;
-let getFinMap;
-
-//функция  получения всех задач
-async function getFinTask() {
-  const allTask = await fetch("http://24api.ru/rest-todo/items-by-id?id=131", {
-    method: "GET",
-    headers: {
-      "content-type": "application/json",
-    },
-  });
-  const data = await allTask.json();
-  console.log(data);
-
-  // перебираем массив и получаем обратно массив с id у которых isDone 1
-getFin =  data.filter((elem)  => {
-  if (elem.isDone===1) {
-    return true
-  }
-});
-
-getFinMap = getFin.map((elem) => {
-  return elem.id;
-});
-
-console.log(getFinMap);
-  
-  deletALL(getFinMap);
-}
-
-
-
-// getFin = data.filter((elem) => elem.isDone===1).map(e=>e.id)

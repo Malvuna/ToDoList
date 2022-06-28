@@ -272,7 +272,7 @@ getFinMap = getFin.map((elem) => {
 
 console.log(getFinMap);
   
-  deletALL(getFinMap);
+  deletALL();
 }
 
 

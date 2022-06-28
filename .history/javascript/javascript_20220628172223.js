@@ -204,18 +204,18 @@ async function getAllTask() {
     return elem.id;
   });
   console.log(mapArr);
-  deletALL(mapArr);
+  deletALL();
 }
 
 // функция на удаление данных в body массив данных с id которые нужно удалить
-async function deletALL(idArr) {
+async function deletALL() {
   await fetch("http://24api.ru/rest-todo/delete-items/", {
     method: "POST",
     headers: {
       "content-type": "application/json",
     },
     body: JSON.stringify({
-      items: idArr,
+      items: mapArr,
     }),
   });
   list.innerHTML = " ";
@@ -259,22 +259,23 @@ async function getFinTask() {
   const data = await allTask.json();
   console.log(data);
 
-  // перебираем массив и получаем обратно массив с id у которых isDone 1
+  // перебираем массив и получаем обратно массив с id
+  getFin = data.filter((elem) => elem.isDone===1).map(e=>e.id)
+
+
+
+  console.log(getFin);
+  // deletALL();
+}
+
+
+// перебираем массив и получаем обратно массив с id
 getFin =  data.filter((elem)  => {
   if (elem.isDone===1) {
     return true
   }
 });
 
-getFinMap = getFin.map((elem) => {
+getFinMap = getFin.map((elem)) => {
   return elem.id;
-});
-
-console.log(getFinMap);
-  
-  deletALL(getFinMap);
 }
-
-
-
-// getFin = data.filter((elem) => elem.isDone===1).map(e=>e.id)
