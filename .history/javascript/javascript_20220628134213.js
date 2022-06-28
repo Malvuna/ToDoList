@@ -78,13 +78,15 @@ function newElement(id, isDone, name) {
   check.append(checkbox);
   isDone == 1 ? true : false;
 
-  // Меняем в чекбоксе текст на зачеркнутый
+    // ------- chek задачи
+  // ставим чек бокс и он меняет текст на зачеркнутый
   checkbox.addEventListener("click", () => {
     strikeText(textDo);
   });
 
 function strikeText(textDo) {
   textDo.classList.toggle("textThrough");
+  console.log("1");
 }
 
   //Текст задачи

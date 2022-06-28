@@ -1,6 +1,4 @@
-
-
-// функция выводит все задачи user131
+// ---- функция выводит все задачи user131
 function allTask(newElement) {
     fetch("http://24api.ru/rest-todo/items-by-id?id=131")
       .then((res) => res.json())
@@ -15,7 +13,9 @@ function allTask(newElement) {
         }
       });
   }
-  
+  // ----
+
+
   
 
 

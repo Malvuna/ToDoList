@@ -1,20 +1,8 @@
-// функция выводит все задачи user131
-function allTask() {
-  fetch("http://24api.ru/rest-todo/items-by-id?id=131")
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data);
+import {allTask} from "./function.js";
+import {deletDo} from "./function.js";
 
-      // запуск функции для отрисовки всех задач
-      for (let i in data) {
-        newElement(data[i].id, data[i].isDone, data[i].name);
-        console.log(data[i].id);
-        console.log(data[i].name);
-      }
-    });
-}
-
-allTask();
+// вызываем функцию отрисовки всех элементов
+allTask(newElement);
 
 // //-------БЛОК 1 -------------------
 
@@ -40,25 +28,25 @@ newDo.append(buttonDo);
 
 //-------БЛОК 1 КОНЕЦ---------
 
-//-------создание элемента --------
+//-------создание списка --------
 let list = document.querySelector("#list");
 
-function newElement(id, isDone, name) {
   //-------Карточка----------
+function newElement(id, isDone, name) {
 
-  // оболочка для запси
+  // оболочка для записи
   let element = document.createElement("div");
   element.className = "element";
 
-  //div для чекбокса
+  //1 div в list
   let check = document.createElement("div");
   check.className = "check";
 
-  //div для текста задачи
+  //2 div в list
   let text = document.createElement("div");
   text.className = "text";
 
-  //div для крестика
+  //3 div в list
   let close = document.createElement("div");
   close.className = "close";
 
@@ -69,25 +57,17 @@ function newElement(id, isDone, name) {
   element.append(check);
   element.append(text);
   element.append(close);
-  //-------Карточка----------
+  //-------END Карточка----------
 
-  // Чекбокс
+  // div чекбокса
   let checkbox = document.createElement("input");
   checkbox.type = "checkbox";
-  checkbox.name = "test";
+  checkbox.name = "checkbox";
   check.append(checkbox);
   isDone == 1 ? true : false;
 
-  // Меняем в чекбоксе текст на зачеркнутый
-  checkbox.addEventListener("click", () => {
-    strikeText(textDo);
-  });
 
-function strikeText(textDo) {
-  textDo.classList.toggle("textThrough");
-}
-
-  //Текст задачи
+  //div текст задачи
   let textDo = document.createElement("label");
   textDo.type = "label";
   textDo.name = "test";
@@ -95,34 +75,22 @@ function strikeText(textDo) {
 
   text.append(textDo);
 
-  //Крестик удаление задачи
+  //крестик удаление задачи
   let deleteElem = document.createElement("p");
   deleteElem.innerHTML = "X";
   deleteElem.dataset.id = id;
   close.append(deleteElem);
   //-------  END создание элемента --------
 
+
+//когда нажимаем кнопку Добавить запускаем функиию.
+buttonDo.addEventListener("click", createTask);
+
   //----------Удаление-------------
 
-  // наводим на крестик запускаем функиию.
-  deleteElem.addEventListener("click", deletDo);
+  // наводим на крестик запускаем  функцию deletDo в которую передаем параметр deleteElem.dataset.id
+  deleteElem.addEventListener("click",() => {deletDo(deleteElem.dataset.id)});
 
-  async function deletDo() {
-    // в переменной id который удаляем
-    let deletId = deleteElem.dataset.id;
-    console.log(deletId);
-
-    //отправляем данные на удаление
-    await fetch(`http://24api.ru/rest-todo/${deletId}`, {
-      method: "DELETE",
-    });
-
-    list.innerHTML = " ";
-    allTask();
-  }
-}
-
-//----------END Удаление-------------
 
 //-------БЛОК 3 -------------------
 
@@ -147,10 +115,7 @@ deleteButtons.append(buttonDeletAll);
 
 //-------БЛОК 3 КОНЕЦ---------
 
-//------Добавление новой задачи ----------
 
-//когда нажимаем кнопку Добавить запускаем функиию.
-buttonDo.addEventListener("click", createTask);
 
 async function createTask() {
   // в переменно то что вводим в поиск
@@ -173,7 +138,7 @@ async function createTask() {
       console.log(data);
     });
 
-  allTask();
+  allTask(newElement);
   list.innerHTML = " ";
 }
 //------END Добавление новой задачи ----------
@@ -219,14 +184,15 @@ async function deletALL() {
     }),
   });
   list.innerHTML = " ";
-  allTask();
+  allTask(newElement);
 }
 
 //---END  Удаление всех задач
 
-
-
-
-
-
-
+// // ------- chek задачи
+// ставим чек бокс и он меняет текст на зачеркнутый
+checkbox.addEventListener("click",() => {strikeText(textDo)});
+}
+  function strikeText(textDo){
+    textDo.classList.add("textThrough")
+  }

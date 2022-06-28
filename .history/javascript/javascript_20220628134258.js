@@ -78,7 +78,7 @@ function newElement(id, isDone, name) {
   check.append(checkbox);
   isDone == 1 ? true : false;
 
-  // Меняем в чекбоксе текст на зачеркнутый
+  // Меняем в  текст на зачеркнутый
   checkbox.addEventListener("click", () => {
     strikeText(textDo);
   });

@@ -50,15 +50,15 @@ function newElement(id, isDone, name) {
   let element = document.createElement("div");
   element.className = "element";
 
-  //div для чекбокса
+  //div чекбокса
   let check = document.createElement("div");
   check.className = "check";
 
-  //div для текста задачи
+  //div текст задачи
   let text = document.createElement("div");
   text.className = "text";
 
-  //div для крестика
+  //3 div в list
   let close = document.createElement("div");
   close.className = "close";
 
@@ -77,15 +77,6 @@ function newElement(id, isDone, name) {
   checkbox.name = "test";
   check.append(checkbox);
   isDone == 1 ? true : false;
-
-  // Меняем в чекбоксе текст на зачеркнутый
-  checkbox.addEventListener("click", () => {
-    strikeText(textDo);
-  });
-
-function strikeText(textDo) {
-  textDo.classList.toggle("textThrough");
-}
 
   //Текст задачи
   let textDo = document.createElement("label");
@@ -226,7 +217,15 @@ async function deletALL() {
 
 
 
+  // ------- chek задачи
+  // ставим чек бокс и он меняет текст на зачеркнутый
+  checkbox.addEventListener("click", () => {
+    strikeText(textDo);
+  });
 
+function strikeText(textDo) {
+  textDo.classList.toggle("textThrough");
+}
 
 
 

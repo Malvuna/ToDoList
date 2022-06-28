@@ -78,15 +78,6 @@ function newElement(id, isDone, name) {
   check.append(checkbox);
   isDone == 1 ? true : false;
 
-  // Меняем в чекбоксе текст на зачеркнутый
-  checkbox.addEventListener("click", () => {
-    strikeText(textDo);
-  });
-
-function strikeText(textDo) {
-  textDo.classList.toggle("textThrough");
-}
-
   //Текст задачи
   let textDo = document.createElement("label");
   textDo.type = "label";
@@ -224,9 +215,18 @@ async function deletALL() {
 
 //---END  Удаление всех задач
 
+checkbox.addEventListener("click", textDo.classList.toggle("textThrough"))
 
+  // ------- chek задачи
+  // ставим чек бокс и он меняет текст на зачеркнутый
+//   checkbox.addEventListener("click", () => {
+//     strikeText(textDo);
+//   });
 
-
+// function strikeText(textDo) {
+//   textDo.classList.toggle("textThrough");
+//   console.log("1");
+// }
 
 
 
