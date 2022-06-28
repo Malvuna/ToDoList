@@ -14,7 +14,6 @@ function draweAllTask(data) {
   }
 }
 
-//
 let tasks = allTask();
 tasks.then((data) => {
   draweAllTask(data);
@@ -163,18 +162,10 @@ async function createTask() {
   })
     .then((data) => data.json())
     .then((data) => {
-    draweAllTask([data]);
+      draweAllTask([data]);
     });
 }
 //------END Добавление новой задачи ----------
-
-
-
-
-
-
-
-
 
 //-------XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 // // функция выводит все задачи user131

@@ -14,7 +14,6 @@ function draweAllTask(data) {
   }
 }
 
-//
 let tasks = allTask();
 tasks.then((data) => {
   draweAllTask(data);

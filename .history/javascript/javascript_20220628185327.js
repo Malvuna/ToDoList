@@ -1,24 +1,27 @@
-// функция получения всех задачи user131
+// функция получения всех задачи user131 
 async function allTask() {
-  return fetch("http://24api.ru/rest-todo/items-by-id?id=131").then((res) =>
-    res.json(),
-  );
-}
-
-// Функции для отрисовки всех задач - принимает массив обьектов
-function draweAllTask(data) {
-  for (let i in data) {
-    newElement(data[i].id, data[i].isDone, data[i].name);
-    console.log(data[i].id);
-    console.log(data[i].name);
-  }
-}
-
-//
-let tasks = allTask();
-tasks.then((data) => {
-  draweAllTask(data);
+  return fetch("http://24api.ru/rest-todo/items-by-id?id=131")
+    .then((res) => res.json())
+    .then((data) => {
+      return data;
 });
+}
+
+// Функции для отрисовки всех задач
+function draweAllTask(){
+for (let i in data) {
+newElement(data[i].id, data[i].isDone, data[i].name);
+console.log(data[i].id);
+console.log(data[i].name);
+}
+}
+
+let tasks = await allTask();
+tasks.then((data)) => {
+  draweAllTask();
+}
+
+
 
 //-------БЛОК 1 ВВОД НОВОЙ ЗАДАЧИ -------------------
 
@@ -44,6 +47,7 @@ newDo.append(buttonDo);
 
 //-------КОНЕЦ БЛОК 1 ВВОД НОВОЙ ЗАДАЧИ---------
 
+
 //-------БЛОК 3 КНОПКИ УДАЛИТЬ ЗАВЕРШЕННЫЕ УДАЛИТЬ ВСЕ-------------------
 
 //переменная delete
@@ -67,6 +71,7 @@ deleteButtons.append(buttonDeletAll);
 
 //-------КОНЕЦ БЛОК 3 КНОПКИ УДАЛИТЬ ЗАВЕРШЕННЫЕ УДАЛИТЬ ВСЕ---------
 
+
 //-------БЛОК 2 СО СПИСКОМ ЗАДАЧ-------------------
 
 //-------создаем весь блок --------
@@ -74,71 +79,73 @@ let list = document.querySelector("#list");
 
 // Функция для создания 1 элемента
 function newElement(id, isDone, name) {
-  // оболочка для создания одной задачи
-  let element = document.createElement("div");
-  element.className = "element";
 
-  //элемент кладем в блок
-  list.append(element);
+// оболочка для создания одной задачи
+let element = document.createElement("div");
+element.className = "element";
 
-  //---
-  //div для чекбокса
-  let check = document.createElement("div");
-  check.className = "check";
-  //div для чекбокса кладем в элемент
-  element.append(check);
+//элемент кладем в блок
+list.append(element);
 
-  // Содержание Чекбокс
-  let checkbox = document.createElement("input");
-  checkbox.type = "checkbox";
-  checkbox.name = "test";
-  check.append(checkbox);
-  isDone == 1 ? true : false;
+//---
+//div для чекбокса
+let check = document.createElement("div");
+check.className = "check";
+//div для чекбокса кладем в элемент
+element.append(check);
 
-  // Меняем в чекбоксе текст на зачеркнутый при чеке
-  checkbox.addEventListener("click", () => {
-    strikeText(textDo);
-  });
+// Содержание Чекбокс
+let checkbox = document.createElement("input");
+checkbox.type = "checkbox";
+checkbox.name = "test";
+check.append(checkbox);
+isDone == 1 ? true : false;
 
-  function strikeText(textDo) {
-    textDo.classList.toggle("textThrough");
-    checkTask(deleteElem.dataset.id);
-  }
-  //---
+// Меняем в чекбоксе текст на зачеркнутый при чеке
+checkbox.addEventListener("click", () => {
+  strikeText(textDo);
+});
 
-  //---
-  //div для текста задачи
-  let text = document.createElement("div");
-  text.className = "text";
-  //div для текста кладем в элемент
-  element.append(text);
-
-  //Содержание Текст задачи
-  let textDo = document.createElement("label");
-  textDo.type = "label";
-  textDo.name = "test";
-  textDo.textContent = name;
-
-  //текст кладем в div с текстом
-  text.append(textDo);
-  ///---
-
-  //---
-  //div для крестика
-  let close = document.createElement("div");
-  close.className = "close";
-  //div для крестика кладем в элемент
-  element.append(close);
-
-  //Содержание Крестик
-  let deleteElem = document.createElement("p");
-  deleteElem.innerHTML = "X";
-  deleteElem.dataset.id = id;
-
-  //Крестик  кладем в div для крестика
-  close.append(deleteElem);
-  //---
+function strikeText(textDo) {
+  textDo.classList.toggle("textThrough");
+  checkTask(deleteElem.dataset.id);
 }
+//---
+
+//---
+//div для текста задачи
+let text = document.createElement("div");
+text.className = "text";
+//div для текста кладем в элемент
+element.append(text);
+
+//Содержание Текст задачи
+let textDo = document.createElement("label");
+textDo.type = "label";
+textDo.name = "test";
+textDo.textContent = name;
+
+//текст кладем в div с текстом
+text.append(textDo);
+///---
+
+//---
+//div для крестика
+let close = document.createElement("div");
+close.className = "close";
+//div для крестика кладем в элемент
+element.append(close);
+
+//Содержание Крестик 
+let deleteElem = document.createElement("p");
+deleteElem.innerHTML = "X";
+deleteElem.dataset.id = id;
+
+//Крестик  кладем в div для крестика
+close.append(deleteElem);
+//---
+}
+
 
 //------Добавление новой задачи ----------
 
@@ -163,10 +170,14 @@ async function createTask() {
   })
     .then((data) => data.json())
     .then((data) => {
-    draweAllTask([data]);
+      console.log(data);
     });
+
+  allTask();
+  list.innerHTML = " ";
 }
 //------END Добавление новой задачи ----------
+
 
 
 
