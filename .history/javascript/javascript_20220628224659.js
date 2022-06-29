@@ -14,7 +14,7 @@ function draweAllTask(data) {
   }
 }
 
-//получаем задачи и отрисовываем через полученный массив
+//
 let tasks = allTask();
 tasks.then((data) => {
   draweAllTask(data);
@@ -42,7 +42,7 @@ buttonDo.className = "buttonOne";
 newDo.append(inputDo);
 newDo.append(buttonDo);
 
-//-------КОНЕЦ БЛОК 1 ВВОД НОВОЙ ЗАДАЧИ---------
+//-------END БЛОК 1 ВВОД НОВОЙ ЗАДАЧИ---------
 
 //-------БЛОК 3 КНОПКИ УДАЛИТЬ ЗАВЕРШЕННЫЕ УДАЛИТЬ ВСЕ-------------------
 
@@ -65,7 +65,7 @@ buttonDeletAll.className = "buttonThree";
 deleteButtons.append(buttonDeletFin);
 deleteButtons.append(buttonDeletAll);
 
-//-------КОНЕЦ БЛОК 3 КНОПКИ УДАЛИТЬ ЗАВЕРШЕННЫЕ УДАЛИТЬ ВСЕ---------
+//-------END БЛОК 3 КНОПКИ УДАЛИТЬ ЗАВЕРШЕННЫЕ УДАЛИТЬ ВСЕ---------
 
 //-------БЛОК 2 СО СПИСКОМ ЗАДАЧ-------------------
 
@@ -135,18 +135,15 @@ function newElement(id, isDone, name) {
   deleteElem.innerHTML = "X";
   deleteElem.dataset.id = id;
 
+  // наводим на крестик запускаем функиию.
+  deleteElem.addEventListener("click", deletDo(deleteElem.dataset.id));
+
   //Крестик  кладем в div для крестика
   close.append(deleteElem);
-
-  //---для удаления одной задачи-----
-  // в переменной id который удаляем
-  let deletId = deleteElem.dataset.id;
-  // наводим на крестик запускаем функиию.
-  deleteElem.addEventListener("click", () => deletDo(deletId));
   //---
 }
 
-//------Добавление новой задачи ----------
+//------Добавление НОВОЙ задачи ----------
 
 //когда нажимаем кнопку Добавить запускаем функиию.
 buttonDo.addEventListener("click", createTask);
@@ -169,25 +166,32 @@ async function createTask() {
   })
     .then((data) => data.json())
     .then((data) => {
-      draweAllTask([data]);
+    draweAllTask([data]);
     });
 }
 //------END Добавление новой задачи ----------
 
-//----------Удаление одной задачи-------------
-async function deletDo(deletId) {
-  //отправляем данные на удаление
-  await fetch("http://24api.ru/rest-todo/" + deletId, {
-    method: "DELETE",
-  });
+//------Удаление ОДНОЙ задачи-------------
 
-  list.innerHTML = " ";
-  let tasks = allTask();
-  tasks.then((data) => {
-    draweAllTask(data);
-  });
-}
-//---------END Удаление одной задачи-------------
+  async function deletDo(id) {
+    // в переменной id который удаляем
+    let deletId = deleteElem.dataset.id;
+    console.log(deletId);
+
+    //отправляем данные на удаление
+    await fetch("http://24api.ru/rest-todo/" + id, {
+      method: "DELETE",
+    });
+
+    list.innerHTML = " ";
+    allTask();
+  }
+
+
+//---------END Удаление ОДНОЙ задачи-------------
+
+
+
 
 
 

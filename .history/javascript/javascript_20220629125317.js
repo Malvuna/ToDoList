@@ -14,7 +14,7 @@ function draweAllTask(data) {
   }
 }
 
-//получаем задачи и отрисовываем через полученный массив
+//
 let tasks = allTask();
 tasks.then((data) => {
   draweAllTask(data);
@@ -188,10 +188,6 @@ async function deletDo(deletId) {
   });
 }
 //---------END Удаление одной задачи-------------
-
-
-
-
 
 //-------XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 // // функция выводит все задачи user131

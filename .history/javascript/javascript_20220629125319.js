@@ -14,7 +14,7 @@ function draweAllTask(data) {
   }
 }
 
-//получаем задачи и отрисовываем через полученный массив
+//
 let tasks = allTask();
 tasks.then((data) => {
   draweAllTask(data);

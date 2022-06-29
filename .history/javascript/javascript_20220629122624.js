@@ -14,7 +14,7 @@ function draweAllTask(data) {
   }
 }
 
-//получаем задачи и отрисовываем через полученный массив
+//
 let tasks = allTask();
 tasks.then((data) => {
   draweAllTask(data);
@@ -137,12 +137,12 @@ function newElement(id, isDone, name) {
 
   //Крестик  кладем в div для крестика
   close.append(deleteElem);
-
-  //---для удаления одной задачи-----
-  // в переменной id который удаляем
-  let deletId = deleteElem.dataset.id;
+  
+   // в переменной id который удаляем
+   let deletId = deleteElem.dataset.id;
   // наводим на крестик запускаем функиию.
-  deleteElem.addEventListener("click", () => deletDo(deletId));
+  deleteElem.addEventListener("click", deletDo);
+
   //---
 }
 
@@ -169,25 +169,16 @@ async function createTask() {
   })
     .then((data) => data.json())
     .then((data) => {
-      draweAllTask([data]);
+    draweAllTask([data]);
     });
 }
 //------END Добавление новой задачи ----------
 
-//----------Удаление одной задачи-------------
-async function deletDo(deletId) {
-  //отправляем данные на удаление
-  await fetch("http://24api.ru/rest-todo/" + deletId, {
-    method: "DELETE",
-  });
-
-  list.innerHTML = " ";
-  let tasks = allTask();
-  tasks.then((data) => {
-    draweAllTask(data);
-  });
+async function deletDo() {
+  console.log("1");
 }
-//---------END Удаление одной задачи-------------
+
+
 
 
 

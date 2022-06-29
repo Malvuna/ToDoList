@@ -14,7 +14,7 @@ function draweAllTask(data) {
   }
 }
 
-//получаем задачи и отрисовываем через полученный массив
+//
 let tasks = allTask();
 tasks.then((data) => {
   draweAllTask(data);
@@ -180,18 +180,17 @@ async function deletDo(deletId) {
   await fetch("http://24api.ru/rest-todo/" + deletId, {
     method: "DELETE",
   });
-
   list.innerHTML = " ";
   let tasks = allTask();
   tasks.then((data) => {
     draweAllTask(data);
   });
 }
+
+
+
+
 //---------END Удаление одной задачи-------------
-
-
-
-
 
 //-------XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 // // функция выводит все задачи user131
