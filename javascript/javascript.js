@@ -34,7 +34,16 @@ buttonDo.addEventListener("click", createTask);
 newDo.append(inputDo);
 newDo.append(buttonDo);
 
-//-------КОНЕЦ БЛОК 1 ВВОД НОВОЙ ЗАДАЧИ---------
+//-------КОНЕЦ БЛОК 1---------
+
+
+//-------БЛОК 2 СО СПИСКОМ ЗАДАЧ-------------------
+
+//-------создаем весь блок --------
+let list = document.querySelector("#list");
+
+//-------КОНЕЦ БЛОК 2-------------------
+
 
 //-------БЛОК 3 КНОПКИ УДАЛИТЬ ЗАВЕРШЕННЫЕ УДАЛИТЬ ВСЕ-------------------
 
@@ -67,9 +76,4 @@ buttonDeletAll.addEventListener("click", () => {
 deleteButtons.append(buttonDeletFin);
 deleteButtons.append(buttonDeletAll);
 
-//-------КОНЕЦ БЛОК 3 КНОПКИ УДАЛИТЬ ЗАВЕРШЕННЫЕ УДАЛИТЬ ВСЕ---------
-
-//-------БЛОК 2 СО СПИСКОМ ЗАДАЧ-------------------
-
-//-------создаем весь блок --------
-let list = document.querySelector("#list");
+//-------КОНЕЦ БЛОК 3---------

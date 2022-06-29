@@ -1,28 +1,28 @@
-import {inputDo} from "./javascript.js"
-import {draweAllTask} from "./functionGettAndDraw.js";
+import { inputDo } from "./javascript.js";
+import { draweAllTask } from "./functionGettAndDraw.js";
 
 //------Добавление новой задачи ----------
 async function createTask() {
-    // в переменно то что вводим в поиск
-    let valueInput = inputDo.value;
-  
-    //отправляем данные с задачей
-    await fetch("http://24api.ru/rest-todo", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({
-        name: valueInput,
-        isDone: 0,
-        user_id: 131,
-      }),
-    })
-      .then((data) => data.json())
-      .then((data) => {
-      draweAllTask([data]);
-      });
-  }
-  //------END Добавление новой задачи ----------
+  // в переменно то что вводим в поиск
+  let valueInput = inputDo.value;
 
-  export {createTask}
+  //отправляем данные с задачей
+  await fetch("http://24api.ru/rest-todo", {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({
+      name: valueInput,
+      isDone: 0,
+      user_id: 131,
+    }),
+  })
+    .then((data) => data.json())
+    .then((data) => {
+      draweAllTask([data]);
+    });
+}
+//------END Добавление новой задачи ----------
+
+export { createTask };
