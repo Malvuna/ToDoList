@@ -3,21 +3,24 @@
 @import url("./button.css");
 @import url("./element.css");
 
+body {
+  background: linear-gradient(135deg, #ad168c,#6b81d7,#70b8d9);
+}
+
 button {
   border: none;
 }
 
 .h1 {
-  font-family: "Inter";
+  font-family: "Caveat";
   font-style: normal;
   font-weight: 700;
-  font-size: 58px;
-  line-height: 70px;
-  color: #000000;
+  font-size: 80px;
+  color: #ffffff;
   text-align: center;
   margin: 0 0;
   padding-top: 80px;
-  padding-bottom: 33px;
+  padding-bottom: 20px;
 }
 
 .input {
@@ -25,6 +28,7 @@ button {
   height: 38px;
   border: 1px solid #ced4da;
   border-radius: 4px;
+  padding-left: 10px;
 
   font-family: "Inter";
   font-style: normal;
@@ -32,6 +36,10 @@ button {
   font-size: 16px;
   line-height: 21px;
   color: #54595e;
+}
+
+::placeholder{
+  color: rgba(84, 89, 94, 0.2);
 }
 
 .close {

@@ -1,7 +1,7 @@
 .buttonOne {
     width: 166px;
     height: 39px;
-    background: #272829;
+    background: #6b81d7;
     border-radius: 4px;
   
     font-family: "Inter";
@@ -17,7 +17,7 @@
   .buttonTwo {
     width: 214px;
     height: 39px;
-    background: #6c757d;
+    background: #70b8d9;
     border-radius: 4px;
   
     font-family: "Inter";
@@ -33,7 +33,7 @@
   .buttonThree {
     width: 131px;
     height: 39px;
-    background: #dc3545;
+    background: #ad168c;
     border-radius: 4px;
   
     font-family: "Inter";

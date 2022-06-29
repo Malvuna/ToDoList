@@ -19,7 +19,7 @@ export let inputDo = document.createElement("input");
 inputDo.className = "input";
 inputDo.type = "input";
 inputDo.name = "inputName";
-inputDo.placeholder = "Сделать удаление завершенных и всех";
+inputDo.placeholder = "не откладывай на завтра...";
 
 // кнопка добавить
 let buttonDo = document.createElement("button");
