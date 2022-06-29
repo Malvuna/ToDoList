@@ -71,7 +71,7 @@ function newElement(id, isDone, name) {
     // в переменной id который удаляем
     let deletId = deleteElem.dataset.id;
     // наводим на крестик запускаем функиию.
-    deleteElem.addEventListener("click", () => deletDo());
+    deleteElem.addEventListener("click", () => deletDo(deletId));
     //---
   }
 

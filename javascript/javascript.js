@@ -1,7 +1,7 @@
-import {allTask, draweAllTask} from "./functionGettAndDraw.js";
-import {getAllTask} from "./getAllTask.js";
-import {createTask} from "./createTask.js"
-import {deletALL} from "./deleteTask.js";
+import { allTask, draweAllTask } from "./functionGettAndDraw.js";
+import { getAllTask } from "./getAllTask.js";
+import { createTask } from "./createTask.js";
+import { deletALL } from "./deleteTask.js";
 
 //получаем задачи и отрисовываем через полученный массив
 let tasks = allTask();
@@ -36,8 +36,6 @@ newDo.append(buttonDo);
 
 //-------КОНЕЦ БЛОК 1 ВВОД НОВОЙ ЗАДАЧИ---------
 
-
-
 //-------БЛОК 3 КНОПКИ УДАЛИТЬ ЗАВЕРШЕННЫЕ УДАЛИТЬ ВСЕ-------------------
 
 //переменная delete
@@ -70,8 +68,6 @@ deleteButtons.append(buttonDeletFin);
 deleteButtons.append(buttonDeletAll);
 
 //-------КОНЕЦ БЛОК 3 КНОПКИ УДАЛИТЬ ЗАВЕРШЕННЫЕ УДАЛИТЬ ВСЕ---------
-
-
 
 //-------БЛОК 2 СО СПИСКОМ ЗАДАЧ-------------------
 

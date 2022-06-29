@@ -1,22 +1,21 @@
-import {allTask, draweAllTask} from "./functionGettAndDraw.js";
-
+import { allTask, draweAllTask } from "./functionGettAndDraw.js";
 
 //----------Удаление одной задачи-------------
 async function deletDo(deletId) {
-    //отправляем данные на удаление
-    await fetch("http://24api.ru/rest-todo/" + deletId, {
-      method: "DELETE",
-    });
-  
-    list.innerHTML = " ";
-    let tasks = allTask();
-    tasks.then((data) => {
-      draweAllTask(data);
-    });
-  }
-  //---------END Удаление одной задачи-------------
+  //отправляем данные на удаление
+  await fetch("http://24api.ru/rest-todo/" + deletId, {
+    method: "DELETE",
+  });
 
-  // функция на удаление данных / в body массив данных с id которые нужно удалить/ в deletALL
+  list.innerHTML = " ";
+  let tasks = allTask();
+  tasks.then((data) => {
+    draweAllTask(data);
+  });
+}
+//---------END Удаление одной задачи-------------
+
+// функция на удаление данных / в body массив данных с id которые нужно удалить/ в deletALL
 // передаем результат функции getAllTask
 async function deletALL(idArr) {
   await fetch("http://24api.ru/rest-todo/delete-items/", {
@@ -36,7 +35,5 @@ async function deletALL(idArr) {
   });
 }
 
-
-
-  export {deletDo}
-  export {deletALL}
+export { deletDo };
+export { deletALL };
