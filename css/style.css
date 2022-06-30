@@ -2,18 +2,18 @@
 @import url("./card.css");
 @import url("./button.css");
 @import url("./element.css");
+@import url("./registration.css");
 
 html {
-  height: 100vh;
 }
 
 body {
-  background: linear-gradient(135deg, #ad168c,#6b81d7,#70b8d9);
+  background: linear-gradient(135deg, #ad168c,#6b81d7,#70b8d9) no-repeat;
 }
+
 
 button {
   border: none;
-  height: 100vh;
 }
 
 .h1 {

@@ -2,6 +2,8 @@ import { allTask, draweAllTask } from "./functionGettAndDraw.js";
 import { getAllTask } from "./getAllTask.js";
 import { createTask } from "./createTask.js";
 import { deletALL } from "./deleteTask.js";
+import { newUser } from "./editNewUser.js";
+// import { newUser } from "./registration.js";
 
 //получаем задачи и отрисовываем через полученный массив
 let tasks = allTask();
@@ -20,7 +22,7 @@ inputDo.className = "input";
 inputDo.type = "input";
 inputDo.name = "inputName";
 inputDo.onfocus = function () {
-  console.log(this.value='')
+  this.value='';
 } // функция очистки строки
 inputDo.placeholder = "не откладывай на завтра...";
 
@@ -80,3 +82,16 @@ deleteButtons.append(buttonDeletFin);
 deleteButtons.append(buttonDeletAll);
 
 //-------КОНЕЦ БЛОК 3---------
+
+
+//----------------------------
+//переменная для кнопки регистрации
+let buttonReg = document.querySelector("#buttonNewUser");
+
+// наводим на кнопку зарегистрироваться и все запускаем функиию 
+buttonReg.addEventListener("click", (event) => {
+  event.preventDefault();
+  newUser();
+});
+
+

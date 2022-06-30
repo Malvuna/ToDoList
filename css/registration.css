@@ -1,0 +1,60 @@
+.cardNewUser{
+    width: 400px;
+    background: #dbe0f2;
+   
+    border-radius: 16px;
+    margin: 0 auto;
+    padding: 50px 70px;
+    box-sizing: border-box;
+  
+  }
+
+  .inputNewUser {
+    width: 250px;
+    height: 38px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    padding-left: 10px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 21px;
+    color: #54595e;
+  }
+
+  .textNewUser {
+    font-family: "Caveat";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    color: #6b81d7;
+    text-align: center;
+    margin: 0 0;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+
+  .buttonNewUser {
+    width: 150px;
+    height: 39px;
+    background: #6b81d7;
+    border-radius: 4px;
+    margin: 0 auto;
+    display: block;
+    
+  
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+    color: #ffffff;
+    cursor: pointer;
+  }
+ 
