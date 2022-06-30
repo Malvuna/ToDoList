@@ -19,6 +19,9 @@ export let inputDo = document.createElement("input");
 inputDo.className = "input";
 inputDo.type = "input";
 inputDo.name = "inputName";
+inputDo.onfocus = function () {
+  console.log(this.value='')
+} // функция очистки строки
 inputDo.placeholder = "не откладывай на завтра...";
 
 // кнопка добавить

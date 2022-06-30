@@ -3,12 +3,17 @@
 @import url("./button.css");
 @import url("./element.css");
 
+html {
+  height: 100vh;
+}
+
 body {
   background: linear-gradient(135deg, #ad168c,#6b81d7,#70b8d9);
 }
 
 button {
   border: none;
+  height: 100vh;
 }
 
 .h1 {
