@@ -1,0 +1,28 @@
+.startCard{
+    width: 400px;
+    background: #dbe0f2;
+   
+    border-radius: 16px;
+    margin: 0 auto;
+    padding: 50px 70px;
+    box-sizing: border-box;
+  }
+
+  .buttonStart {
+    width: 150px;
+    height: 39px;
+    background: #6b81d7;
+    border-radius: 4px;
+    margin: 0 auto;
+    display: block;
+  
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+    color: #ffffff;
+    cursor: pointer;
+  }
+ 

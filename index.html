@@ -14,23 +14,28 @@
       </div>
 
     <main>
-      <div id="card" class="cardClass">
+      <div id="card" class="cardClass displayNone" >
         <div id="newDo" class="newDoClass"> </div>
         <div id="list"> </div>
         <div id="delete" class="delete">
         </div>
       </div>
 
-      <div id="registration" class="cardNewUser">
+      <div id="registration" class="cardNewUser displayNone">
         <form class="formNewUser" name="formNewUser">
           <p class="textNewUser">Новый пользователь</p>
           <input id="nickname" type="text" name="name" class="inputNewUser" placeholder="Ник">
           <input id="email" type="email" name="email" class="inputNewUser" placeholder="E-mail">
-          <input id="fname" type="text" name="fname" class="inputNewUser" placeholder="Фамилия">
-          <input id="sname" type="text" name="sname" class="inputNewUser" placeholder="Имя">
+          <input id="fname" type="text" name="fname" class="inputNewUser" placeholder="Имя">
+          <input id="lname" type="text" name="lname" class="inputNewUser" placeholder="Фамилия">
           <!-- <input id="password_hash" type="password_hash" name="password_hash" class="inputNewUser" placeholder="пароль"> -->
-          <button id="buttonNewUser" class="buttonNewUser">Регистрация</button>
+          <button id="buttonRegistration" class="buttonNewUser">Регистрация</button>
         </form>
+      </div>
+
+      <div id="start" class="startCard">
+        <button id="" class="buttonStart" style="margin-bottom:40px ;">Вход</button>
+        <button id="buttonNewUser" class="buttonStart">Новый пользователь</button>
       </div>
 
     </main>

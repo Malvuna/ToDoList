@@ -86,12 +86,37 @@ deleteButtons.append(buttonDeletAll);
 
 //----------------------------
 //переменная для кнопки регистрации
-let buttonReg = document.querySelector("#buttonNewUser");
+let buttonReg = document.querySelector("#buttonRegistration");
 
 // наводим на кнопку зарегистрироваться и все запускаем функиию 
 buttonReg.addEventListener("click", (event) => {
   event.preventDefault();
   newUser();
+  div();
 });
 
 
+
+//переменная для кнопки Новый пользователь
+let buttonNew = document.querySelector("#buttonNewUser");
+
+//переменая для стартового окна
+let startDiv = document.querySelector("#start");
+
+//переменая для формы регистрации
+let registrationDiv = document.querySelector("#registration");
+
+//переменная для todo list
+let cardDiv = document.querySelector("#card");
+
+// наводим на кнопку Новый пользователь
+buttonNew.addEventListener("click", () => {
+  registrationDiv.classList.toggle('displayNone');
+  startDiv.classList.toggle('displayNone');
+});
+
+//функция смены окон
+function div() {
+  cardDiv.classList.toggle('displayNone');
+  registrationDiv.classList.toggle('displayNone');
+}

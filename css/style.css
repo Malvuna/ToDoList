@@ -3,12 +3,14 @@
 @import url("./button.css");
 @import url("./element.css");
 @import url("./registration.css");
+@import url("./startCard.css");
 
 html {
 }
 
 body {
   background: linear-gradient(135deg, #ad168c,#6b81d7,#70b8d9) no-repeat;
+  min-height: 100vh;
 }
 
 
@@ -49,4 +51,8 @@ button {
 
 .close {
   cursor: pointer;
+}
+
+.displayNone{
+  display: none;
 }
