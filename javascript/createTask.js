@@ -15,10 +15,10 @@ async function createTask() {
     body: JSON.stringify({
       name: valueInput,
       isDone: 0,
-      user_id: 131,
+      user_id: localStorage.getItem("id"),
     }),
   })
-    .then((data) => data.json())
+    .then((data) => data.json()) // возвращенеие ответа от сервера
     .then((data) => {
       draweAllTask([data]);
     });

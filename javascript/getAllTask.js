@@ -1,3 +1,4 @@
+
 //функция для получение масиива с id / false - id всех элементов что есть / true - все Чеканутуе элементы
 function getAllTask(select = false) {
   let taskAll = document.querySelectorAll(".element");
@@ -14,7 +15,7 @@ function getAllTask(select = false) {
       }
     });
   }
-  // console.log(result);
+  console.log(result);
   return result;
 }
 
