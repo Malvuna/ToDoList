@@ -4,6 +4,7 @@ import { createTask } from "./createTask.js";
 import { deletALL } from "./deleteTask.js";
 import { newUser } from "./editNewUser.js";
 import { formEnterUser } from "./enterUser.js";
+import { nameId } from "./enterUser.js";
 
 //получаем задачи и отрисовываем через полученный массив
 let tasks = allTask();
@@ -125,18 +126,35 @@ let buttonwrap = document.querySelector("#exit");
 
 // наводим на кнопку выход, очищаем ID и переходим на index
 buttonwrap.addEventListener("click", () => {
-  window.location.href = 'index.html'
+  window.location.href = "index.html";
   localStorage.clear();
 });
 
 //переменная для кнопки вход
-let buttonEnterUser = document.querySelector("#enter");
+export let buttonEnterUser = document.querySelector("#enter");
 
-// наводим на кнопку вход
+// наводим на кнопку вход и запускаем функцию проверки/отправки данных
 buttonEnterUser.addEventListener("click", () => {
   formEnterUser();
-  console.log("1");
-  startDiv.classList.toggle("displayNone");
-  cardDiv.classList.toggle("displayNone");
-  wrap.classList.toggle("displayNone");
 });
+
+//----------- вставка имени в приветствие
+export let hiName = document.createElement("p");
+hiName.innerHTML = "Привет, " + nameId;
+hello.append(hiName);
+//-----------
+
+//-----------
+
+//-----------Функции проверки на пустую окна при авторизации
+function chekFrame() {
+  if (
+    document.querySelector("input[name='username']").value === "" ||
+    document.querySelector("input[name='username']").value === ""
+  ) {
+    return false;
+  }
+  return true;
+}
+
+export { chekFrame };

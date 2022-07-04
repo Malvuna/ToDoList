@@ -1,4 +1,3 @@
-import { getAllTask } from "./getAllTask.js";
 
 // получаем даные из заполненой формы
 function newUser() {

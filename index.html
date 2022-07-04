@@ -17,7 +17,7 @@
 
       <div id="wrap" class="wrapAuth displayNone" > 
 
-      <div class="hello"> Привет,
+      <div id="hello" class="hello"> 
     <div><button id = "exit" class="buttonwrap"> Выход</button> </div>
       </div>
 
@@ -36,11 +36,11 @@
       <div id="registration" class="cardNewUser displayNone">
         <form class="formNewUser" name="formNewUser">
           <p class="textNewUser">Новый пользователь</p>
-          <input id="nickname" type="text" name="username" class="inputNewUser" placeholder="Ник">
-          <input id="email" type="email" name="email" class="inputNewUser" placeholder="E-mail">
-          <input id="fname" type="text" name="fname" class="inputNewUser" placeholder="Имя">
-          <input id="lname" type="text" name="lname" class="inputNewUser" placeholder="Фамилия">
-          <input id="password_hash" type="password_hash" name="password_hash" class="inputNewUser" placeholder="Пароль">
+          <input id="nickname" type="text" name="username" class="inputNewUser" placeholder="Ник" >
+          <input id="email" type="email" name="email" class="inputNewUser" placeholder="E-mail" >
+          <input id="fname" type="text" name="fname" class="inputNewUser" placeholder="Имя" >
+          <input id="lname" type="text" name="lname" class="inputNewUser" placeholder="Фамилия" >
+          <input id="password_hash" type="password_hash" name="password_hash" class="inputNewUser" placeholder="Пароль" >
           <button id="buttonRegistration" class="buttonNewUser">Регистрация</button>
         </form>
       </div>
@@ -48,8 +48,8 @@
       <div id="start" class="startCard">
 
         <form class="enterUser" name="enterUser">
-          <input id="nickname" type="text" name="username" class="inputNewUser" placeholder="Ник">
-          <input id="password_hash" type="password_hash" name="password_hash" class="inputNewUser" placeholder="Пароль">
+          <input id="nickname" type="text" name="username" class="inputNewUser" placeholder="Ник" required>
+          <input id="password_hash" type="password_hash" name="password_hash" class="inputNewUser" placeholder="Пароль" >
         </form>
         <button id="enter" class="buttonStart" style="margin-bottom:40px ;">Вход</button>
         <button id="buttonNewUser" class="buttonStart">Новый пользователь</button>
