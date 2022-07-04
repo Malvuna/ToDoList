@@ -6,6 +6,7 @@ function newUser() {
   let formData = new FormData(form); //
 
   sendNewUser(formData)
+  console.log(formData);
 }
 
 //отправляем нового юзера
@@ -21,7 +22,7 @@ async function sendNewUser (formData) {
   })
   .then((data) => data.json()) // возвращенеие ответа от сервера
   .then((data) => {
-    // console.log(data.id);
+    console.log(data);
     localStorage.setItem("id", data.id)
   });
   

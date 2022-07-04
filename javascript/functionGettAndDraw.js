@@ -1,6 +1,6 @@
 import {newElement} from "./newElement.js";
 
-// функция получения всех задачи user131
+// функция получения всех задачи user
 async function allTask() {
     return fetch("http://24api.ru/rest-todo/items-by-id?id=" + localStorage.getItem("id"))
     .then((res) =>

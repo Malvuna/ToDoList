@@ -9,10 +9,9 @@ html {
 }
 
 body {
-  background: linear-gradient(135deg, #ad168c,#6b81d7,#70b8d9) no-repeat;
+  background: linear-gradient(135deg, #ad168c, #6b81d7, #70b8d9) no-repeat;
   min-height: 100vh;
 }
-
 
 button {
   border: none;
@@ -45,7 +44,7 @@ button {
   color: #54595e;
 }
 
-::placeholder{
+::placeholder {
   color: rgba(84, 89, 94, 0.2);
 }
 
@@ -53,6 +52,39 @@ button {
   cursor: pointer;
 }
 
-.displayNone{
+.displayNone {
   display: none;
+}
+
+.headnickname {
+  width: 100px;
+  height: 30px;
+  margin: 0 auto;
+  box-sizing: border-box;
+
+  font-family: "Caveat";
+  font-style: normal;
+  font-size: 20px;
+  color: #ffffff;
+}
+
+.wrapAuth {
+  width: 530px;
+  margin: 0 auto;
+}
+
+.hello {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-family: "Caveat";
+  font-style: normal;
+  font-size: 22px;
+  color: #ffffff;
+}
+
+img {
+  width: 25px;
+  cursor: pointer;
 }

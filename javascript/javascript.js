@@ -22,8 +22,8 @@ inputDo.className = "input";
 inputDo.type = "input";
 inputDo.name = "inputName";
 inputDo.onfocus = function () {
-  this.value='';
-} // функция очистки строки
+  this.value = "";
+}; // функция очистки строки
 inputDo.placeholder = "не откладывай на завтра...";
 
 // кнопка добавить
@@ -41,14 +41,12 @@ newDo.append(buttonDo);
 
 //-------КОНЕЦ БЛОК 1---------
 
-
 //-------БЛОК 2 СО СПИСКОМ ЗАДАЧ-------------------
 
 //-------создаем весь блок --------
 let list = document.querySelector("#list");
 
 //-------КОНЕЦ БЛОК 2-------------------
-
 
 //-------БЛОК 3 КНОПКИ УДАЛИТЬ ЗАВЕРШЕННЫЕ УДАЛИТЬ ВСЕ-------------------
 
@@ -83,19 +81,16 @@ deleteButtons.append(buttonDeletAll);
 
 //-------КОНЕЦ БЛОК 3---------
 
-
 //----------------------------
 //переменная для кнопки регистрации
 let buttonReg = document.querySelector("#buttonRegistration");
 
-// наводим на кнопку зарегистрироваться и все запускаем функиию 
+// наводим на кнопку зарегистрироваться и все запускаем функиию
 buttonReg.addEventListener("click", (event) => {
   event.preventDefault();
   newUser();
   div();
 });
-
-
 
 //переменная для кнопки Новый пользователь
 let buttonNew = document.querySelector("#buttonNewUser");
@@ -109,14 +104,35 @@ let registrationDiv = document.querySelector("#registration");
 //переменная для todo list
 let cardDiv = document.querySelector("#card");
 
+//переменная для wrap
+let wrap = document.querySelector("#wrap");
+
 // наводим на кнопку Новый пользователь
 buttonNew.addEventListener("click", () => {
-  registrationDiv.classList.toggle('displayNone');
-  startDiv.classList.toggle('displayNone');
+  registrationDiv.classList.toggle("displayNone");
+  startDiv.classList.toggle("displayNone");
 });
 
-//функция смены окон
+//функция смены окон на кнопку Регистрация
 function div() {
-  cardDiv.classList.toggle('displayNone');
-  registrationDiv.classList.toggle('displayNone');
+  cardDiv.classList.toggle("displayNone");
+  registrationDiv.classList.toggle("displayNone");
+  wrap.classList.toggle("displayNone");
 }
+
+//переменная для кнопки выход
+let buttonwrap = document.querySelector("#exit");
+
+// наводим на кнопку выход, очищаем ID и переходим на index
+buttonwrap.addEventListener("click", () => {
+  window.location.href = 'index.html'
+  localStorage.clear();
+});
+
+//переменная для кнопки вход
+let buttonEnterUser = document.querySelector("#enter");
+
+// наводим на кнопку вход
+buttonEnterUser.addEventListener("click", () => {
+  console.log("1");
+});

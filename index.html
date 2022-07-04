@@ -9,9 +9,21 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <body>
-    <header class="header"> 
-      <div> <h1 class="h1"> ToDo List </h1></header>
+    <header id="header" class="header"> 
+
+      <div> 
+        <h1 class="h1"> ToDo List </h1>
       </div>
+
+      <div id="wrap" class="wrapAuth displayNone" > 
+
+      <div class="hello"> Привет,
+    <div><button id = "exit" class="buttonwrap"> Выход</button> </div>
+      </div>
+
+      </div>
+
+    </header>
 
     <main>
       <div id="card" class="cardClass displayNone" >
@@ -28,13 +40,18 @@
           <input id="email" type="email" name="email" class="inputNewUser" placeholder="E-mail">
           <input id="fname" type="text" name="fname" class="inputNewUser" placeholder="Имя">
           <input id="lname" type="text" name="lname" class="inputNewUser" placeholder="Фамилия">
-          <!-- <input id="password_hash" type="password_hash" name="password_hash" class="inputNewUser" placeholder="пароль"> -->
+          <!-- <input id="password_hash" type="password_hash" name="password_hash" class="inputNewUser" placeholder="Пароль"> -->
           <button id="buttonRegistration" class="buttonNewUser">Регистрация</button>
         </form>
       </div>
 
       <div id="start" class="startCard">
-        <button id="" class="buttonStart" style="margin-bottom:40px ;">Вход</button>
+
+        <form class="enterUser" name="enterUser">
+          <input id="nickname" type="text" name="name" class="inputNewUser" placeholder="Ник">
+          <input id="password_hash" type="password_hash" name="password_hash" class="inputNewUser" placeholder="Пароль">
+        </form>
+        <button id="enter" class="buttonStart" style="margin-bottom:40px ;">Вход</button>
         <button id="buttonNewUser" class="buttonStart">Новый пользователь</button>
       </div>
 
