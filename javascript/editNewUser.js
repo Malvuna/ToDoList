@@ -13,12 +13,9 @@ function newUser() {
 async function sendNewUser (formData) {
   await fetch("http://24api.ru/rest-user", {
     method: "POST",
-    headers: {
-      "content-type": "application/json",
-    },
-    body: JSON.stringify(
+    body: 
       formData
-    ),
+    ,
   })
   .then((data) => data.json()) // возвращенеие ответа от сервера
   .then((data) => {

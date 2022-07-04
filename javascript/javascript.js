@@ -3,7 +3,7 @@ import { getAllTask } from "./getAllTask.js";
 import { createTask } from "./createTask.js";
 import { deletALL } from "./deleteTask.js";
 import { newUser } from "./editNewUser.js";
-// import { newUser } from "./registration.js";
+import { formEnterUser } from "./enterUser.js";
 
 //получаем задачи и отрисовываем через полученный массив
 let tasks = allTask();
@@ -134,5 +134,9 @@ let buttonEnterUser = document.querySelector("#enter");
 
 // наводим на кнопку вход
 buttonEnterUser.addEventListener("click", () => {
+  formEnterUser();
   console.log("1");
+  startDiv.classList.toggle("displayNone");
+  cardDiv.classList.toggle("displayNone");
+  wrap.classList.toggle("displayNone");
 });
