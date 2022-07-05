@@ -4,7 +4,7 @@ import { createTask } from "./createTask.js";
 import { deletALL } from "./deleteTask.js";
 import { newUser } from "./editNewUser.js";
 import { formEnterUser } from "./enterUser.js";
-import { nameId } from "./enterUser.js";
+
 
 //получаем задачи и отрисовываем через полученный массив
 let tasks = allTask();
@@ -136,11 +136,14 @@ export let buttonEnterUser = document.querySelector("#enter");
 // наводим на кнопку вход и запускаем функцию проверки/отправки данных
 buttonEnterUser.addEventListener("click", () => {
   formEnterUser();
+  startDiv.classList.toggle("displayNone");
+  cardDiv.classList.toggle("displayNone");
+  wrap.classList.toggle("displayNone");
 });
 
 //----------- вставка имени в приветствие
 export let hiName = document.createElement("p");
-hiName.innerHTML = "Привет, " + nameId;
+hiName.innerHTML = "Привет,  " + localStorage.getItem("name");
 hello.append(hiName);
 //-----------
 
@@ -150,8 +153,11 @@ hello.append(hiName);
 function chekFrame() {
   if (
     document.querySelector("input[name='username']").value === "" ||
-    document.querySelector("input[name='username']").value === ""
+    document.querySelector("input[name='password_hash']").value === ""
   ) {
+    console.log(document.getElementById("nickname").value);
+    console.dir(document.querySelector("#nickname"));
+
     return false;
   }
   return true;

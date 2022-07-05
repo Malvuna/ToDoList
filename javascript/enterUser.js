@@ -7,11 +7,19 @@ function formEnterUser() {
   let formData = new FormData(form);
   EnterUser(formData);
 }
-export let nameId 
+
+
 //отправляем данные  юзера
 async function EnterUser(formData) {
-  if (!chekFrame()){                  // проверяем не пустые ли окна
-    alert("nhbnfnf")
+  
+  let flag = true
+  for(let val of formData.values()) {
+    if (val === "" ){
+      flag = false
+    }
+ }
+  if (!flag){                  // проверяем не пустые ли окна
+    alert("что-то пошло не так")
   }
   else {
   await fetch("http://24api.ru/rest-user/auth", {
@@ -24,7 +32,8 @@ async function EnterUser(formData) {
         alert("NO");
       } else {
         localStorage.setItem("id", data.id);
-        nameId = data.username;
+        localStorage.setItem("name", data.name);
+
 
         buttonEnterUser.addEventListener("click", () => {
           formEnterUser();
