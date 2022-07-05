@@ -135,15 +135,15 @@ export let buttonEnterUser = document.querySelector("#enter");
 
 // наводим на кнопку вход и запускаем функцию проверки/отправки данных
 buttonEnterUser.addEventListener("click", () => {
-  formEnterUser();
-  startDiv.classList.toggle("displayNone");
-  cardDiv.classList.toggle("displayNone");
-  wrap.classList.toggle("displayNone");
+  formEnterUser(startDiv, cardDiv, wrap);
+  // startDiv.classList.toggle("displayNone");
+  // cardDiv.classList.toggle("displayNone");
+  // wrap.classList.toggle("displayNone");
 });
 
 //----------- вставка имени в приветствие
 export let hiName = document.createElement("p");
-hiName.innerHTML = "Привет,  " + localStorage.getItem("name");
+hiName.innerHTML = "Привет,   " + localStorage.getItem("name");
 hello.append(hiName);
 //-----------
 
